@@ -506,18 +506,13 @@
 
       
         
-          
-            <p>�Ƚ���ϸ��ffmpeg��������</p>
-<p>ffmpeg��Ŀ�����¼���������:<br>ffmpeg ��Ƶ�ļ�ת�������й���,Ҳ֧�־���ʵʱ���ӿ�ץȡ�ͱ�������Ƶ�ļ�.<br>ffserver ����HTTP(RTSP���ڿ�����)����ʵʱ�㲥�Ķ�ý��������.Ҳ֧��ʱ��ƽ��<br>fplay �� SDL��FFmpeg�⿪����һ���򵥵�ý�岥����<br>libavcodec һ������������FFmpeg����Ƶ���������Ŀ�.Ϊ�˱�֤�������ܺ͸߿ɸ�����,����������������ͷ������.<br>libavformat һ�����������е���ͨ���Ӹ�ʽ�Ľ������Ͳ������Ŀ�.</p>
-<p>Ffmpegѡ��˵��<br>ͨ��ѡ��</p>
-<p>-L license<br>-h ����<br>-fromats ��ʾ���õĸ�ʽ���������ģ�Э���ġ�����<br>-f fmt ǿ�Ȳ��ø�ʽfmt<br>-I filename �����ļ�<br>-y ���������ļ�<br>-t duration ���ü�¼ʱ��  hh:mm:ss[.xxx]��ʽ�ļ�¼ʱ��Ҳ֧��<br>-ss position ������ָ����ʱ�� [-]hh:mm:ss[.xxx]�ĸ�ʽҲ֧��<br>-title string ���ñ���<br>-author string ��������<br>-copyright string ���ð�Ȩ<br>-comment string ��������<br>-target type ����Ŀ���ļ�����(vcd,svcd,dvd)<br>���еĸ�ʽѡ������ʣ��������Լ���������С���Զ����� ��ֻ��Ҫ�������µľͿ����ˣ�<br>ffmpeg -i myfile.avi -target vcd /tmp/vcd.mpg<br>-hq ��������������<br>-itsoffset offset ��������Ϊ��׼��ʱ��ƫ�ƣ���ѡ��Ӱ�����к����������ļ�����ƫ�Ʊ��ӵ������ļ���ʱ��������һ����ƫ����ζ����Ӧ�������ӳ��� offset�롣 <br>[-]hh:mm:ss[.xxx]�ĸ�ʽҲ֧��<br>��Ƶѡ��</p>
-<p>-b bitrate ���ñ����ʣ�ȱʡ200kb/s<br>-r fps ����֡Ƶ ȱʡ25<br>-s size ����֡��С ��ʽΪWXH ȱʡ160X128.�����ļ�дҲ����ֱ��ʹ�ã�<br>                     Sqcif  128X96 qcif 176X144 cif 252X288 4cif 704X576<br>-aspect aspect ���ú��ݱ� 4:3 16:9 �� 1.3333 1.7777<br>-croptop size ���ö����г�����С ���ص�λ<br>-cropbottom size �Ccropleft size �Ccropright size<br>-padtop size ���ö��������Ĵ�С ���ص�λ<br>-padbottom size �Cpadleft size �Cpadright size �Cpadcolor color ���ò�������ɫ(hex,6��16���Ƶ�������:��:�����У��� ��000000������ɫ)<br>-vn ������Ƶ��¼<br>-bt tolerance ������Ƶ�������̶�kbit/s<br>-maxrate bitrate����������Ƶ�������̶�<br>-minrate bitreate ������С��Ƶ�������̶�<br>-bufsize size �������ʿ��ƻ�������С<br>-vcodec codec ǿ��ʹ��codec�����뷽ʽ�� ������copy��ʾԭʼ���������ݱ��뱻������<br>-sameq ʹ��ͬ����Ƶ������ΪԴ��VBR��<br>-pass n ѡ������������1����2�������������ǳ����á���һ������ͳ����Ϣ���ڶ������ɾ�ȷ������������<br>-passlogfile file ѡ�������ļ�¼�ļ���Ϊfile<br>�߼���Ƶѡ��</p>
-<p>-g gop_size ����ͼ������С<br>-intra ������֡�ڱ���<br>-qscale q ʹ�ù̶�����Ƶ��������(VBR)<br>-qmin q   ��С��Ƶ��������(VBR)<br>-qmax q ������Ƶ��������(VBR)<br>-qdiff q �������ȼ�����ƫ�� (VBR)<br>-qblur blur ��Ƶ���������ữ(VBR)<br>-qcomp compression ��Ƶ��������ѹ��(VBR)<br>-rc_init_cplx complexity һ�������ĳ�ʼ���Ӷ�<br>-b_qfactor factor ��p��b֡����qp����<br>-i_qfactor factor ��p��i֡����qp����<br>-b_qoffset offset ��p��b֡����qpƫ��<br>-i_qoffset offset ��p��i֡����qpƫ��<br>-rc_eq equation �������ʿ��Ʒ��� Ĭ��tex^qComp<br>-rc_override override �ض������µ����ʿ�������<br>-me method �����˶����Ƶķ��� ���÷����� zero phods log x1 epzs(ȱʡ) full<br>-dct_algo algo ����dct���㷨 ���õ��� 0 FF_DCT_AUTO ȱʡ��DCT 1 FF_DCT_FASTINT 2 FF_DCT_INT 3 FF_DCT_MMX 4 FF_DCT_MLIB 5 FF_DCT_ALTIVEC<br>-idct_algo algo ����idct�㷨�����õ��� 0 FF_IDCT_AUTO ȱʡ��IDCT 1 FF_IDCT_INT 2 FF_IDCT_SIMPLE 3<br>             FF_IDCT_SIMPLEMMX 4 FF_IDCT_LIBMPEG2MMX 5 FF_IDCT_PS2 6 FF_IDCT_MLIB 7 FF_IDCT_ARM 8 FF_IDCT_ALTIVEC  9 FF_IDCT_SH4 10 FF_IDCT_SIMPLEARM<br>-er n ���ô�������Ϊn 1 FF_ER_CAREFULL ȱʡ 2 FF_ER_COMPLIANT 3 FF_ER_AGGRESSIVE 4 FF_ER_VERY_AGGRESSIVE<br>-ec bit_mask ���ô����ڱ�Ϊbit_mask,��ֵΪ����ֵ��λ���� 1 FF_EC_GUESS_MVS (default=enabled) 2 FF_EC_DEBLOCK  (default=enabled)<br>-bf frames ʹ��frames B ֡��֧��mpeg1,mpeg2,mpeg4<br>-mbd mode �������� 0 FF_MB_DECISION_SIMPLE ʹ��mb_cmp 1 FF_MB_DECISION_BITS 2 FF_MB_DECISION_RD<br>-4mv ʹ��4���˶�ʸ�� ������mpeg4<br>-part ʹ�����ݻ��� ������mpeg4<br>-bug param �ƹ�û�б��Զ����⵽������������<br>-strict strictness ����׼���ϸ���<br>-aic ʹ�ܸ߼�֡�ڱ��� h263+<br>-umv ʹ�������˶�ʸ�� h263+<br>-deinterlace �����ý�֯����<br>-interlace ǿ�Ƚ�֯������ ����mpeg2��mpeg4��Ч�������������ǽ�֯�Ĳ�������Ҫ���ֽ�֯����Сͼ����ʧ��ʱ�����ø�ѡ���ѡ�ķ����ǲ���֯��������ʧ����<br>-psnr ����ѹ��֡��psnr<br>-vstats ������Ƶ����ͳ�Ƶ�vstats_hhmmss.log<br>-vhook module ������Ƶ����ģ�� module ������ģ�����Ͳ������ÿո��ֿ�<br>��Ƶѡ��</p>
-<p>-ab bitrate ������Ƶ����<br>-ar freq ������Ƶ������<br>-ac channels ����ͨ�� ȱʡΪ1<br>-an ��ʹ����Ƶ��¼<br>-acodec codec ʹ��codec������<br>��Ƶ/��Ƶ����ѡ��</p>
-<p>-vd device ������Ƶ�����豸������/dev/video0<br>-vc channel ������Ƶ����ͨ�� DV1394ר��<br>-tvstd standard ���õ��ӱ�׼ NTSC PAL(SECAM)<br>-dv1394 ����DV1394����<br>-av device ������Ƶ�豸 ����/dev/dsp<br>�߼�ѡ��</p>
-<p>-map file:stream ����������ӳ��<br>-debug ��ӡ�ض�������Ϣ<br>-benchmark Ϊ��׼���Լ���ʱ��<br>-hex �㵹ÿһ��������<br>-bitexact ��ʹ��λ��ȷ�㷨 ���ڱ���������<br>-ps size ���ð���С����bitsΪ��λ<br>-re �Ա���֡Ƶ�����ݣ���Ҫ����ģ�Ⲷ���豸<br>-loop ѭ����������ֻ������ͼ����������ffserver����</p>
-
-          
+          <p>�Ƚ���ϸ��ffmpeg��������</p>
+<p>ffmpeg��Ŀ�����¼���������:<br>ffmpeg ��Ƶ�ļ�ת�������й���,Ҳ֧�־���ʵʱ���ӿ�ץȡ�ͱ�������Ƶ�ļ�.<br>ffserver ����HTTP(RTSP���ڿ�����)����ʵʱ�㲥�Ķ�ý��������.Ҳ֧��ʱ��ƽ��<br>fplay �� SDL��FFmpeg�⿪����һ���򵥵�ý�岥����<br>libavcodec һ������������FFmpeg����Ƶ���������Ŀ�.Ϊ�˱�֤�������ܺ͸߿ɸ�����,����������������ͷ������.<br>libavformat һ�����������е���ͨ���Ӹ�ʽ�Ľ������Ͳ������Ŀ�.<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/07/28/FFmpeg4Android中文参数/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -567,7 +562,7 @@
               
                 
                 <a class="post-title-link" href="/2016/07/28/FFmpeg4Android英文教程/" itemprop="url">
-                  ffmpegӢ�Ľ̳�
+                  ffmpeg英文教程
                 </a>
               
             
@@ -621,7 +616,7 @@
 
           
           
-             <span id="/2016/07/28/FFmpeg4Android英文教程/" class="leancloud_visitors" data-flag-title="ffmpegӢ�Ľ̳�">
+             <span id="/2016/07/28/FFmpeg4Android英文教程/" class="leancloud_visitors" data-flag-title="ffmpeg英文教程">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -644,158 +639,12 @@
 
       
         
-          
-            <p>FFmpeg4Android is a way your application can run FFmpeg commands,  only Java, no need for C code, or NDK.</p>
-<p>=== new ========</p>
-<h1 id="New-version-25-24"><a href="#New-version-25-24" class="headerlink" title="New version 25.24"></a>New version 25.24</h1><p>Android Studio full demo with ffmpeg4android_lib<br>Download version 25.24 <a href="https://drive.google.com/file/d/0B9qAjo6wKhk9MEpNNjMxaG5oWXM/view?usp=sharing" target="_blank" rel="external">https://drive.google.com/file/d/0B9qAjo6wKhk9MEpNNjMxaG5oWXM/view?usp=sharing</a></p>
-<p>Running FFmpeg4Android demo project (Android Studio)<br>Just Download the Android Studio project above, open the zip, build, and run to your device.<br>Add FFmpeg support to your app (Android Studio)<br>Simple Guide with screenshots <a href="https://docs.google.com/document/d/1FWMAT3FbCXlW_91d6Ek_UCD_CtYJWxYaDVY2hE6Onig/edit?usp=sharing" target="_blank" rel="external">https://docs.google.com/document/d/1FWMAT3FbCXlW_91d6Ek_UCD_CtYJWxYaDVY2hE6Onig/edit?usp=sharing</a></p>
-<p>Commands Examples<br>This commands verified to work with FFmpeg4Android:<br>This are only some basic examples, a lot more is possible…</p>
-<p>Video Compress:<br>// simple regular commad<br>ffmpeg -y -i /sdcard/videokit/in.mp4 -strict experimental -s 160x120 -r 25 -vcodec mpeg4 -b 150k -ab 48000 -ac 2 -ar 22050 /sdcard/videokit/out.mp4</p>
-<p>// compress with h264 (to support chrome)<br>ffmpeg -y -i /sdcard/videokit/in.mp4 -strict experimental -vcodec libx264 -preset ultrafast -crf 24 -acodec aac -ar 44100 -ac 2 -b:a 96k -s 320x240 -aspect 4:3 /sdcard/videokit/out3.mp4<br>// As complex command, don’t forget to use setCommandComplex(complexCommand)<br>// Use this format to support files that contains spaces and special characters<br>String[] complexCommand = {“ffmpeg”,”-y” ,”-i”, “/sdcard/video kit/in.mp4”,”-strict”,”experimental”,”-s”, “160x120”,”-r”,”25”, “-vcodec”, “mpeg4”, “-b”, “150k”, “-ab”,”48000”, “-ac”, “2”, “-ar”, “22050”, “/sdcard/video kit/out.mp4”};</p>
-<p>The parameters that control the quality are the -s (resolution, currently set on 160x120) and the -b (the bitrate, currently set on 150k).<br>Increase them, e.g -s 480x320<br>And -b 900k<br>To improve quality (and get less compression).?</p>
-<p>Note that you will need to use the Extras (see below) distribution to use this command.</p>
-<p>Audio Compression</p>
-<p>String commandStr = “ffmpeg -y -i /sdcard/vk2/in.wav -ar 44100 -ac 2 -ab 64k -f mp3 /sdcard/videokit/out.mp3”;</p>
-<p>Audio Trim (Crop)<br>String commandStr ={“ffmpeg”,”-y”,”-i”,”/storage/emulated/0/vk2/in.mp3”,”-strict”,”experimental”,”-acodec”,”copy”,”-ss”,”00:00:00”,”-t”,”00:00:03.000”,”/storage/emulated/0/videokit/out.mp3”};</p>
-<p>Video Rotate (90 degrees cw):<br>ffmpeg -y -i /sdcard/videokit/in.mp4 -strict experimental -vf transpose=1 -s 160x120 -r 30 -aspect 4:3 -ab 48000 -ac 2 -ar 22050 -b 2097k /sdcard/video_output/out.mp4</p>
-<p>Video Crop:<br>ffmpeg -y -i /sdcard/videokit/short.mp4 -strict experimental -vf crop=100:100:0:0 -s 320x240 -r 15 -aspect 3:4 -ab 12288 -vcodec mpeg4 -b 2097152 -sample_fmt s16 /sdcard/videokit/out.mp4</p>
-<p>Extract Picture from Video:<br>ffmpeg -y -i /sdcard/videokit/in.mp4 -strict experimental -an -r 1/2 -ss 00:00:00.000 -t 00:00:03 /sdcard/videokit/filename%03d.jpg</p>
-<p>Extract Sound from Video:<br>ffmpeg -y -i /sdcard/videokit/in.avi -strict experimental -acodec copy /sdcard/videokit/out.mp3</p>
-<p>ffmpeg -y -i /sdcard/videokit/in.mp4 -strict experimental -vn -ar 44100 -ac 2 -ab 256k -f mp3 /sdcard/videokit/out.mp3</p>
-<p>Re-encode Audio in Video:<br>ffmpeg -y -i /sdcard/in.mp4 -strict experimental -vcodec copy -acodec libmp3lame -ab 64k -ac 2 -b 1200000 -ar 22050 /sdcard/out.mp4</p>
-<p>Change Video Resolution:<br>ffmpeg -y -i /sdcard/in.mp4 -strict experimental -vf transpose=3 -s 320x240 -r 15 -aspect 3:4 -ab 12288 -vcodec mpeg4 -b 2097152 -sample_fmt s16 /sdcard/out.mp4</p>
-<p>Cut time segment from Video:<br>ffmpeg -ss 00:00:01.000 -y -i /sdcard/videokit/in.mp4 -strict experimental -t 00:00:02.000 -s 320x240 -r 15 -vcodec mpeg4 -b 2097152 -ab 48000 -ac 2 -b 2097152 -ar 22050 /sdcard/videokit/out.mp4</p>
-<p>Transcode Audio:<br>ffmpeg -y -i /sdcard/videokit/big.wav /sdcard/videokit/small.mp3</p>
-<p>WaterMark:<br> //  test with watermark.png 128x128, add it to /sdcard/videokit/<br>String[] complexCommand = {“ffmpeg”,”-y” ,”-i”, “/sdcard/videokit/in.mp4”,”-strict”,”experimental”, “-vf”, “movie=/sdcard/videokit/watermark.png [watermark]; [in][watermark] overlay=main_w-overlay_w-10:10 [out]”,”-s”, “320x240”,”-r”, “30”, “-b”, “15496k”, “-vcodec”, “mpeg4”,”-ab”, “48000”, “-ac”, “2”, “-ar”, “22050”, “/sdcard/videokit/out.mp4”}; </p>
-<p>Streaming simple:</p>
-<ul>
-<li>note that all streaming examples will need to add internet permission to the Android project Manifest file ( <uses-permission android:name="android.permission.INTERNET">  )</uses-permission></li>
-</ul>
-<p>// use this command on ffmpeg4android<br>ffmpeg -i /sdcard/videokit/2.mpg -strict experimental -f mpegts udp://192.168.0.114:8090</p>
-<p>// You can use any player that supports streaming, on the target machine, to play the stream, in this case we used ffplay</p>
-<p>ffplay -f mpegts -ast 1 -vst 0 -ar 48000 udp://192.168.0.114:8090 </p>
-<p>STREAM RAW VIDEO FROM CAMERA PREVIEW:</p>
-<p>GETTING THE RAW STREAM FROM THE CAMERA PREVIEW:</p>
-<p>Parameters parameters = camera.getParameters();<br>imageFormat = parameters.getPreviewFormat();<br>if (imageFormat == ImageFormat.NV21) {<br>                Camera.Size previewSize = parameters.getPreviewSize();<br>                frameWidth = previewSize.width;<br>                frameHeight = previewSize.height;<br>                Rect rect = new Rect(0, 0, frameWidth, frameHeight);<br>                YuvImage img = new YuvImage(data, ImageFormat.NV21, frameWidth, frameHeight, null);<br>                try {<br>                                outStream.write(data);<br>                                outStream.flush();<br>                }<br>}</p>
-<p>ENCODE AND STREAM USING FFMPEG4ANDROID:<br>“ffmpeg -f rawvideo -pix_fmt nv21 -s 640x480 -r 15 -i “ + Environment.getExternalStorageDirectory().getAbsolutePath().toString() + “/yuv.data rtmp://host/stream.flv”</p>
-<p>STREAM ON ONE DEVICE, RECEIVE A STEAM ON SECOND DEVICE AND SAVE IT:<br>on the first device:</p>
-<p>ffmpeg -i /sdcard/one3.mp4 -f mpegts udp://192.168.0.107:8090</p>
-<p>on the second device:</p>
-<p>String[] complexCommand = {“ffmpeg”,”-y” ,”-i”, “udp://192.168.0.108:8090”,”-strict”,”experimental”,”-crf”, “30”,”-preset”, “ultrafast”, “-acodec”, “aac”, “-ar”, “44100”, “-ac”, “2”, “-b:a”, “96k”, “-vcodec”, “libx264”, “-r”, “25”, “-b:v”, “500k”, “-f”, “flv”, “/sdcard/videokit/t.flv”};</p>
-<ul>
-<li>this needs internet permission in the manifest. </li>
-</ul>
-<p>H264 encoding:<br>ffmpeg -y -i /sdcard/Video/1.MTS -strict experimental -vcodec libx264 -preset ultrafast -crf 24 /sdcard/videokit/out.mp4</p>
-<p>ffmpeg -y -i /sdcard/videokit/m.mkv -strict experimental -vcodec libx264 -preset ultrafast -crf 24 -sn /sdcard/videokit/m2.mkv</p>
-<p>Subtitles:<br>ffmpeg -y -i /sdcard/videokit/m2.mkv -i /sdcard/videokit/in.srt -strict experimental -vcodec libx264 -preset ultrafast -crf 24 -scodec copy /sdcard/videokit/mo.mkv</p>
-<p>ffmpeg -y -i /sdcard/videokit/m2.mkv -i /sdcard/videokit/in.srt -strict experimental -scodec copy /sdcard/videokit/outm3.mkv</p>
-<p>Convert Audio file to m4a<br>ffmpeg -i /sdcard/videokit/in.mp3 /sdcard/videokit/out.m4a</p>
-<p>Encode h264 video and aac audio in one command<br>ffmpeg -y -i /sdcard/videokit/in.mp4 -strict experimental -vcodec libx264 -crf 24 -acodec aac /sdcard/videokit/out.mkv</p>
-<p>Vintage filter</p>
-<p>commandStr = “ffmpeg -y -i /sdcard/videokit/in.mp4 -strict experimental -vf curves=vintage -s 640x480 -r 30 -aspect 4:3 -ab 48000 -ac 2 -ar 22050 -b 2097k -vcodec mpeg4 /sdcard/videokit/curve.mp4”;</p>
-<p>Black &amp; White filter (Gray Scale):</p>
-<p>commandStr = “ffmpeg -y -i /sdcard/videokit/in.mp4 -strict experimental -vf hue=s=0 -vcodec mpeg4 -b 2097152 -s 320x240 -r 30 /sdcard/videokit/out.mp4”;</p>
-<p>Sepia using colorchannelmixer</p>
-<p>String[] complexCommand = {“ffmpeg”,”-y” ,”-i”, “/sdcard/videokit/sample.mp4”,”-strict”, “experimental”, “-filter_complex”,<br>“[0:v]colorchannelmixer=.393:.769:.189:0:.349:.686:.168:0:.272:.534:.131[colorchannelmixed];[colorchannelmixed]eq=1.0:0:1.3:2.4:1.0:1.0:1.0:1.0[color_effect]”,<br> “-map”, “[color_effect]”,”-map”, “0:a”, “-vcodec”, “mpeg4”,”-b”, “15496k”, “-ab”, “48000”, “-ac”, “2”, “-ar”, “22050”,”/sdcard/videokit/out.mp4”};</p>
-<p>Create filter using Photoshop curves </p>
-<p>You can create some effects using Photoshop curves operation (Image, Adjustments, Curves (CNTL + M)), export the curves acv file, and apply it using this command:</p>
-<p>String[]<br>complexCommand={“ffmpeg”,”-y”,”-i”,”/storage/emulated/0/vk2/in.mp4”,”-strict”,”experimental”,”-vf”,”curves=psfile=/storage/emulated/0/videokit/sepia.acv”,”-b”,”2097k”,”-vcodec”,”mpeg4”,”-ab”,”48000”,”-ac”,”2”,”-ar”,”22050”,”/storage/emulated/0/videokit/out.mp4”}?</p>
-<p>Fade in and out transition<br>String[] complexCommand = {“ffmpeg”,”-y” ,”-i”, “/sdcard/videokit/in.m4v”,”-acodec”, “copy”, “-vf”, “fade=t=in:st=0:d=5, fade=t=out:st=20:d=5”, “/sdcard/videokit/out.mp4”};</p>
-<p>Join 2 files using of the same size using filter_complex<br>String[] complexCommand = {“ffmpeg”,”-y”,”-i”, “/sdcard/videokit/in1.mp4”, “-i”, “/sdcard/videokit/in2.mp4”, “-strict”,”experimental”, “-filter_complex”, “[0:0] [0:1] [1:0] [1:1] concat=n=2:v=1:a=1”, “/sdcard/videokit/out.mp4”};</p>
-<p>// concat videos with different codecs, and different sizes, different rate and different aspect ratio:</p>
-<p>String[] complexCommand = {“ffmpeg”,”-y”,”-i”,”/storage/emulated/0/videokit/sample.mp4”,<br>    “-i”,”/storage/emulated/0/videokit/in.mp4”,”-strict”,”experimental”,<br>    “-filter_complex”,<br>    “[0:v]scale=640x480,setsar=1:1[v0];[1:v]scale=640x480,setsar=1:1[v1];[v0][0:a][v1][1:a] concat=n=2:v=1:a=1”,<br>    “-ab”,”48000”,”-ac”,”2”,”-ar”,”22050”,”-s”,”640x480”,”-r”,”30”,”-vcodec”,”mpeg4”,”-b”,”2097k”,”/storage/emulated/0/vk2_out/out.mp4”}</p>
-<p>Create a video from pictures</p>
-<p>// note that this commans is sensative to the pictures size.<br>// all pictures should be with the same size, and correspond to s peticular video resolution.<br>// e.g hd video is: 1280x720, and this should be the pictures size<br>commandStr = “ffmpeg -y -r 1/5 -i /sdcard/videokit/pic00%d.jpg /sdcard/videokit/out.mp4”;</p>
-<p>Advanced filtering<br>String[] complexCommand = {“ffmpeg”,”-y” ,”-i”, “/sdcard/videokit/in.mp4”,”-strict”,”experimental”, “-vf”, “crop=iw/2:ih:0:0,split[tmp],pad=2*iw[left]; [tmp]hflip[right]; [left][right] overlay=W/2”, “-vb”, “20M”, “-r”, “23.956”, “/sdcard/videokit/out.mp4”};</p>
-<p>Increase video and audio speed<br>String[] complexCommand = {“ffmpeg”,”-y” ,”-i”, “/sdcard/videokit/in.mp4”,”-strict”,”experimental”, “-filter_complex”, “[0:v]setpts=0.5*PTS[v];[0:a]atempo=2.0[a]”,”-map”,”[v]”,”-map”,”[a]”, “-b”, “2097k”,”-r”,”60”, “-vcodec”, “mpeg4”, “/sdcard/videokit/out.mp4”};</p>
-<p>Overlay 2 videos side by side</p>
-<pre><code>String[] complexCommand = {&quot;ffmpeg&quot;,&quot;-y&quot; ,&quot;-i&quot;, &quot;/sdcard/Movies/sample.mp4&quot;,&quot;-i&quot;, &quot;/sdcard/Movies/sample2.mp4&quot;, &quot;-strict&quot;,&quot;experimental&quot;,
-           &quot;-filter_complex&quot;, 
-           &quot;[0:v:0]pad=iw*2:ih[bg];&quot; + 
-           &quot;[bg][1:v:0]overlay=w&quot;,
-           &quot;-s&quot;, &quot;320x240&quot;,&quot;-r&quot;, &quot;30&quot;, &quot;-b&quot;, &quot;15496k&quot;, &quot;-vcodec&quot;, &quot;mpeg4&quot;,&quot;-ab&quot;, &quot;48000&quot;, &quot;-ac&quot;, &quot;2&quot;, &quot;-ar&quot;, &quot;22050&quot;,
-           &quot;/sdcard/videokit/out.mp4&quot;};  
-</code></pre><p>  vintage + watermark</p>
-<pre><code>String[] complexCommand = {&quot;ffmpeg&quot;,&quot;-y&quot; ,&quot;-i&quot;, &quot;/sdcard/Movies/sample.mp4&quot;,&quot;-strict&quot;,&quot;experimental&quot;,
-          &quot;-vf&quot;, 
-          &quot;movie=/sdcard/videokit/watermark002.png [watermark];&quot; + 
-          &quot;[in][watermark] overlay=main_w-overlay_w-10:10 [out_overlay];&quot; +
-          &quot;[out_overlay]curves=vintage[out]&quot;,  
-          &quot;-s&quot;, &quot;320x240&quot;,&quot;-r&quot;, &quot;30&quot;, &quot;-b&quot;, &quot;15496k&quot;, &quot;-vcodec&quot;, &quot;mpeg4&quot;,&quot;-ab&quot;, &quot;48000&quot;, &quot;-ac&quot;, &quot;2&quot;, &quot;-ar&quot;, &quot;22050&quot;,
-          &quot;/sdcard/videokit/out_water_vinta.mp4&quot;};
-</code></pre><p>Watermark + audio replace</p>
-<pre><code>String[] complexCommand = {&quot;ffmpeg&quot;,&quot;-y&quot; ,&quot;-i&quot;, &quot;/sdcard/Movies/sample.mp4&quot;,&quot;-i&quot;, &quot;/sdcard/videokit/in.mp3&quot;, &quot;-strict&quot;,&quot;experimental&quot;,
-            &quot;-filter_complex&quot;,
-            &quot;[1:a]atempo=1.0[a1];&quot; +
-            &quot;movie=/sdcard/videokit/watermark002.png [watermark];&quot; + 
-            &quot;[0:v][watermark] overlay=main_w-overlay_w-10:10 [outv]&quot;,
-            &quot;-map&quot;, &quot;[outv]&quot;, &quot;-map&quot;, &quot;[a1]&quot;,
-            &quot;-s&quot;, &quot;320x240&quot;,&quot;-r&quot;, &quot;30&quot;, &quot;-b&quot;, &quot;15496k&quot;, &quot;-vcodec&quot;, &quot;mpeg4&quot;,&quot;-ab&quot;, &quot;48000&quot;, &quot;-ac&quot;, &quot;2&quot;, &quot;-ar&quot;, &quot;22050&quot;,
-            &quot;-shortest&quot;,&quot;/sdcard/videokit/out_water.mp4&quot;};
-</code></pre><p>Looping on a picture and adding audio with audio encoding support</p>
-<pre><code>String commandStr = &quot;ffmpeg -y -loop 1 -i /sdcard/videokit/pic001.jpg -i /sdcard/videokit/in.mp3 -strict experimental -s 1270x720 -r 25 -aspect 16:9 -vcodec mpeg4 -vcodec mpeg4 -ab 48000 -ac 2 -b 2097152 -ar 22050 -shortest /sdcard/videokit/out2.mp4&quot;;
-</code></pre><p>Replacing video audio track, using the shotest (video or audio)</p>
-<p>String[] complexCommand = {“ffmpeg”,”-y” ,”-i”, “/sdcard/videokit/sample.mp4”,”-i”, “/sdcard/videokit/in.mp3”, “-strict”,”experimental”,<br>                “-map”, “0:v”, “-map”, “1:a”,<br>                “-s”, “320x240”,”-r”, “30”, “-b”, “15496k”, “-vcodec”, “mpeg4”,”-ab”, “48000”, “-ac”, “2”, “-ar”, “22050”,”-shortest”,”/sdcard/videokit/out.mp4”};</p>
-<p>Animated GIF</p>
-<p>//Compress animated gif:<br>fmpeg -f gif -i /sdcard/videokit/pic1.gif -strict experimental -r 10 /sdcard/videokit/pic1_1.gif</p>
-<p>//Convert mp4 to animated gif:<br>ffmpeg -y -i /sdcard/videokit/in.mp4 -strict experimental -r 20 /sdcard/videokit/out.gif</p>
-<p>//Convert animated gif to mp4:<br>ffmpeg -y -f gif -i /sdcard/videokit/infile.gif /sdcard/videokit/outfile.mp4</p>
-<p>ARM64-v8a support</p>
-<p>Arm64-v8a is part of the extras (see related section).</p>
-<p>Note that although many devices claim they have 64bit support, they don’t.<br>To verify a device does use arm64 architecture, open telnet on the device (or use adb), then run:</p>
-<p>getprop ro.product.cpu.abi</p>
-<p>if you get: armv7a, then you have 32bit architecture.<br>if you get: arm64-v8a, then you have 64bit architecture.</p>
-<p>Using complex commands</p>
-<p>A complex command is a command that contains embedded elements (in most cases it uses quotations for that.<br>Here is an example:<br>ffmpeg -i /sdcard/videokit/in.mp4 -aspect 1:1 -vf split “[main][tmp];[tmp] crop=iw/2:ih:0:0, hflip[tp],[tp] pad=2*iw[left]; [main] crop=iw/2:ih:iw/2:0[right]; [left][right] overlay=W/2” -vb 20M -r 23.956 /sdcard/videokit/outs.mp4</p>
-<p>To set a complex command you should create a String array and use the method:<br>setCommandComplex()</p>
-<p>Like this:<br>String[] complexCommand = {“ffmpeg”,”-y” ,”-i”, “/sdcard/videokit/mo.mkv”,”-strict”,”experimental”, “-vf”, “crop=iw/2:ih:0:0,split[tmp],pad=2*iw[left]; [tmp]hflip[right]; [left][right] overlay=W/2”, “-vb”, “20M”, “-r”, “23.956”, “/sdcard/videokit/out.mp4”};</p>
-<p>setCommandComplex(complexCommand);</p>
-<p>Size Tuning - Keeping your app apk small<br>FFmpeg4Android lib contains a build specifically to tackle this issue - Small App Size.<br>This build contains a subset of FFmpeg4Android that contains features (filters, coders, encoders, muxers etc), That are the most commonly used - the “essentials build”.<br>This build is great for apps that need to keep small size.<br>All the performance benefits of the full ffmpeg4android are kept.</p>
-<p>To use this build, goto ffmpeg_lib libs/armeabi-v7a folder,<br>simply rename libvideokit.so to libvideokit.so.full,<br> and rename libvideokit.so.ess to libvideokit.so<br>Refresh the ffmpeg_lib project, and build your project (that use the ffmpeg_lib).<br>Your project will now use the essentials build, and you will see that the apk created is much smaller in size.</p>
-<p>You can also remove the  libs/x86 folder, x86 devices will still work using the Houdini ARM real time translation, of course it will be slower then using the native.</p>
-<p>You can also remove the libs/arm64-v8a folder since currently most devices does not support this platform, and all that do have backward compatibility with armeabi-v7a.</p>
-<p>Make sure you test and see that all the functionality you need is still there.</p>
-<p>Performance Tuning<br>Prefer mpeg4 codec (-codec mpeg4), since with this codec, ffmpeg4android can utilize all device cores.<br>Here is an example of command that use mpeg4 codec (in this case this command is doing a video compression):</p>
-<p>String[] complexCommand = {“ffmpeg”,”-y” ,”-i”, “/sdcard/video kit/in.mp4”,”-strict”,”experimental”,”-s”, “160x120”,”-r”,”25”, “-vcodec”, “mpeg4”, “-b”, “150k”, “-ab”,”48000”, “-ac”, “2”, “-ar”, “22050”, “/sdcard/video kit/out.mp4”};</p>
-<p>If its possible, reduce output video resolution (-s) and bitrate (-b), the lower the video quality is, the faster it will take to produce.<br>Encoding using h264 can’t utilize all device cores, and thus is much slower. If you must use it, use the -preset ultrafast flag.<br>Using the -threads flag can only degrade the performance, as ffmpeg4android automatically detects the number of cores your device has, and set the optimal number of threads for the command used.<br>Extras<br>Contains extra functionality that is not part of the standard distribution.<br>Download<br>x264 encoding support.<br>   To use it, download the extras distribution, extract it, it will look like this:<br>   – libs<br>     – armeabi-v7a<br>         – libvideokit.so.full_with_x264<br>     – x86<br>          – libvideokit.so.full_with_x264<br>    Copy the libvideokit.so.full_with_x264 to the ffmpeg4android_lib/libs to the coresponding architecture folder. Rename it to libvideokit.so, (replacing your current libvideokit.so).</p>
-<p>Note that you must change your project manifest (not the lib manifest) to target api 22 or below, or the library will crash on Android 6 and above devices.</p>
-<p>x86 Support<br>The standard Distribution is using Houdini Runtime ARM Intel translation.<br>To use native x86 follow the above (x264) explanations to copy the x86 so files.<br>This will also make it possible to run on x86 fast emulator (which does not have Houdini support).<br>You need to add the abiFilter “x86” in your project module defaultConfig:</p>
-<p>defaultConfig {<br>    applicationId “com.examples.ffmpeg4android_demo”<br>    minSdkVersion 16<br>    targetSdkVersion 23<br>    ndk {<br>        abiFilter “armeabi-v7a”<br>        abiFilter “x86”<br>    }<br>}</p>
-<p>Note that you must change your project manifest (not the lib manifest) to target api 22 or below, or the library will crash on Android 6 and above devices.<br>arm64-v8a<br>The same as the x86 support, just add the “abiFilter arm64-v8a”<br>Note that we don’t recommend using this as our tests showed no significant performance improvement<br>from armeabi-v7a<br>FFmpeg Command Correctness<br>FFmpeg command can be quite complex, and in some cases, getting it right can be hard.<br>To help you with that, FFmpeg4Android will create a file called vk.log that contains the ffmpeg log in the device demo folder (by default /sdcard/videokit) This log can be very useful when understanding what is wrong with the FFmpeg command, and in most cases it will pinpoint you to the section in the command that is wrong.<br>If you still don’t understand what is wrong with your command, make sure the command works on a windows machine, and you can email us the command for inspection.</p>
-<p>Known issues &amp; TroubleShooting</p>
-<ul>
-<li>x264 encoding was moved to the extras, so using this encoder will throw CommandValidationException.<br>Its recommended to use the mpeg4 encoder instead, its much faster.<br>If you still need to use the x264 encoding, read the extras section to understand how to add it to your project.</li>
-</ul>
-<ul>
-<li>If you use only armeabi-v7a you must make sure all your other JNI libs are restricted to this architecture,  If not the loader will fail to find the library so file (it will try to find it in x64 folders).<br>To do it, add this configuration in your module build.gradle (under defaultConfig):</li>
-</ul>
-<p>ndk {<br>    abiFilter “armeabi-v7a”<br>}</p>
-<p>Latest version release notes</p>
-<h2 id="25-24"><a href="#25-24" class="headerlink" title="25.24"></a>25.24</h2><p>Patch 6</p>
-<ul>
-<li>Simple example android 6 fix.</li>
-<li>MultipleCommandsExample crash fix.</li>
-<li>Version code fix.</li>
-</ul>
-<p>Patch 4</p>
-<ul>
-<li>Removed x86 (moved to extras).</li>
-<li><p>abiFilter “x86” commented out</p>
-</li>
-<li><p>arm64-v8a moved to extras</p>
-</li>
-<li>Fixed more issues related Android 6.</li>
-<li><p>Loader improvements.</p>
-</li>
-<li><p>Support for targeting api 23 and above.</p>
-</li>
-<li>Performance and size improvements.</li>
-<li>ess size reduced and added support for fade filter and image2 demuxer<br>to support creation of video from images.</li>
-<li>Support for x264 detection in the validation mechanism.</li>
-<li>x264 encoding support is moved to extras,</li>
-</ul>
-
-          
+          <p>FFmpeg4Android is a way your application can run FFmpeg commands,  only Java, no need for C code, or NDK.<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/07/28/FFmpeg4Android英文教程/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
