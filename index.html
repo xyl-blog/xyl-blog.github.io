@@ -428,6 +428,165 @@
             
               
                 
+                <a class="post-title-link" href="/2017/02/22/moto-x-boot/" itemprop="url">
+                  Moto X 刷机命令
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-02-22T22:35:53+08:00" content="2017-02-22">
+              2017-02-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/个人笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">个人笔记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/02/22/moto-x-boot/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/22/moto-x-boot/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/02/22/moto-x-boot/" class="leancloud_visitors" data-flag-title="Moto X 刷机命令">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre><code>进fastboot后，使用adb命令开始刷机：
+
+//分区表
+fastboot flash partition gpt.bin
+fastboot flash motoboot motoboot.img
+fastboot flash logo logo.bin
+fastboot flash boot boot.img
+fastboot flash recovery recovery.img
+fastboot flash system system.img
+
+//刷基带
+fastboot flash modem NON-HLOS.bin
+fastboot erase modemst1
+fastboot erase modemst2
+fastboot flash fsg fsg.mbn
+
+
+fastboot erase cache
+fastboot erase userdata
+fastboot erase customize
+fastboot erase clogo
+//完成
+fastboot oem fb_mode_clear
+//重启
+fastboot reboot
+
+gpt.bin分区表品级若何确定?
+</code></pre><p>　　用UltraEdit，翻开底包外的“gpt.bin”文件。按Ctrl+G，转到Ctrl+G搜刮框内输进：0x00006FFC。分区表品级便界说正在分区表的0x00006FFC的位置。<br>    局限性：<br>　　解锁BL后，处于一级的分区表能够通刷，然而必需要找bootloader适配。没有适配否能招致间接变砖。国止解锁BL后，先要看看本人脚机的分区表品级，以就刷进其余版原的底包后能够刷归去。</p>
+<pre><code>注意：
+    VICTARA_RETCN_XT1085_5.1_LPE23.32-70_cid11_CFC.xml  分级：5
+</code></pre>
+          
+        
+      
+    </div>
+
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+
+    <div>
+      
+    </div>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/02/18/Java编程思想/" itemprop="url">
                   Java编程思想
                 </a>
@@ -1454,135 +1613,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/17/Head-First-Design-Pattern/" itemprop="url">
-                  Head First Design Pattern
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-17T21:43:42+08:00" content="2016-06-17">
-              2016-06-17
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">读书笔记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/17/Head-First-Design-Pattern/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/17/Head-First-Design-Pattern/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/06/17/Head-First-Design-Pattern/" class="leancloud_visitors" data-flag-title="Head First Design Pattern">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-
-    <div>
-      
-    </div>
-  </article>
-
-
-    
   </section>
 
   
@@ -1628,7 +1658,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
