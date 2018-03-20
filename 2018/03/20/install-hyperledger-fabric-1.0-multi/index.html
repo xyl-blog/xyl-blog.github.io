@@ -1,0 +1,1016 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Fabric 1.0多机部署," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="1.环境准备我们要部署的是1Peer+1Orderer的架构，需要准备2台机器，可以开2台虚拟机，也可以购买2台云服务器。不管怎么样，我们需要这2台机器网络能够互通，而且安装相同的系统，我用的是CentOS7.1 、内核3.10.0-693.el7.x86_64。为了方便，我先启用1台虚拟机把环境搭建好，然后再复制出1台。这里是我Server主机名（角色）和IP：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fabric 1.0多机部署">
+<meta property="og:url" content="http://yoursite.com/2018/03/20/install-hyperledger-fabric-1.0-multi/index.html">
+<meta property="og:site_name" content="xyl-blog">
+<meta property="og:description" content="1.环境准备我们要部署的是1Peer+1Orderer的架构，需要准备2台机器，可以开2台虚拟机，也可以购买2台云服务器。不管怎么样，我们需要这2台机器网络能够互通，而且安装相同的系统，我用的是CentOS7.1 、内核3.10.0-693.el7.x86_64。为了方便，我先启用1台虚拟机把环境搭建好，然后再复制出1台。这里是我Server主机名（角色）和IP：">
+<meta property="og:updated_time" content="2018-03-20T14:16:45.920Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Fabric 1.0多机部署">
+<meta name="twitter:description" content="1.环境准备我们要部署的是1Peer+1Orderer的架构，需要准备2台机器，可以开2台虚拟机，也可以购买2台云服务器。不管怎么样，我们需要这2台机器网络能够互通，而且安装相同的系统，我用的是CentOS7.1 、内核3.10.0-693.el7.x86_64。为了方便，我先启用1台虚拟机把环境搭建好，然后再复制出1台。这里是我Server主机名（角色）和IP：">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6263950864822568000,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/20/install-hyperledger-fabric-1.0-multi/"/>
+
+  <title> Fabric 1.0多机部署 | xyl-blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?69405dd561a0561e10fd03653d20cbdb";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">xyl-blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">xyl-blog</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'sDJjoMPPTt5-xrjzZPT3','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Fabric 1.0多机部署
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-03-20T21:02:18+08:00" content="2018-03-20">
+              2018-03-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/区块链/" itemprop="url" rel="index">
+                    <span itemprop="name">区块链</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/03/20/install-hyperledger-fabric-1.0-multi/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/03/20/install-hyperledger-fabric-1.0-multi/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2018/03/20/install-hyperledger-fabric-1.0-multi/" class="leancloud_visitors" data-flag-title="Fabric 1.0多机部署">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>1.环境准备<br>我们要部署的是1Peer+1Orderer的架构，需要准备2台机器，可以开2台虚拟机，也可以购买2台云服务器。不管怎么样，我们需要这2台机器网络能够互通，而且安装相同的系统，我用的是CentOS7.1 、内核3.10.0-693.el7.x86_64。为了方便，我先启用1台虚拟机把环境搭建好，然后再复制出1台。这里是我Server主机名（角色）和IP：<br><a id="more"></a></p>
+<p>orderer.example.com    192.168.1.9<br>peer0.org1.example.com    192.168.1.10<br>peer1.org1.example.com    10.51.126.9<br>接下来我们软件环境，包括Go、Docker、Docker Compose：</p>
+<p>1.1 Go的安装</p>
+<p>具体涉及到的命令包括：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install epel -y#安装 EPEL 源</span><br><span class="line">yum install go -y#yum 安装 Golang</span><br></pre></td></tr></table></figure></p>
+<p>接下来编辑当前用户的环境变量：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/profile</span><br></pre></td></tr></table></figure></p>
+<p>添加以下内容：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export GOROOT=/usr/local/go</span><br><span class="line">export GOPATH=/usr/local/gopath</span><br><span class="line">export PATH=$PATH:$GOPATH:$GOROOT/bin</span><br></pre></td></tr></table></figure></p>
+<p>编辑保存并退出vi后，把这些环境载入：</p>
+<p>source /etc/profile</p>
+<p>查看go版本信息</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">go version</span><br><span class="line"></span><br><span class="line">go version go1.9 linux/amd64</span><br></pre></td></tr></table></figure>
+<p>1.2 Docker安装</p>
+<p>详情看CentOS docker yum 源配置方法<a href="https://docs.docker.com/v1.13/engine/installation/linux/centos/" target="_blank" rel="external">https://docs.docker.com/v1.13/engine/installation/linux/centos/</a><br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">yum list docker-engine.x86_64 --showduplicates |sort -r#获取可以安装的docker版本</span><br><span class="line">yum -y install docker-engine-1.9.1</span><br><span class="line">service docker restart</span><br><span class="line"></span><br><span class="line">docker --version</span><br><span class="line"></span><br><span class="line">Docker version 18.02.0-ce, build fc4de44</span><br></pre></td></tr></table></figure></p>
+<p>1.3 Docker-Compose的安装</p>
+<p>Docker-compose是支持通过模板脚本批量创建Docker容器的一个组件。在安装Docker-Compose之前，需要安装Python-pip，运行脚本：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install python-pip#安装pip</span><br><span class="line">pip install --upgrade pip#安装好的pip进行升级</span><br></pre></td></tr></table></figure>
+<p>安装完成后，接下来安装Docker-compose：</p>
+<p>pip install docker-compose&gt;=1.8.0#推荐为 1.8.0以上版本,防止和docker不匹配</p>
+<p>1.4 Fabric源码下载</p>
+<p>我们可以使用Git命令下载源码：</p>
+<p>mkdir -p /usr/local/gopath/src/github.com/hyperledger/<br>cd /usr/local/gopath/src/github.com/hyperledger/</p>
+<p>git clone <a href="https://github.com/hyperledger/fabric.git" target="_blank" rel="external">https://github.com/hyperledger/fabric.git</a></p>
+<p>由于Fabric一直在更新，需要切换到v1.0.0版本的源码即可：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/gopath/src/github.com/hyperledger/fabric</span><br><span class="line">git branch -a</span><br><span class="line">git checkout v1.0.0</span><br></pre></td></tr></table></figure></p>
+<p>1.5 Fabric Docker镜像的下载</p>
+<p>设置了Docker Hub镜像地址，可以下载很快。官方文件提供了批量下载的脚本，直接运行：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/gopath/src/github.com/hyperledger<span class="comment">//fabric/examples/e2e_cli/</span></span><br><span class="line">source download-dockerimages.sh -c x86_64-<span class="number">1.0</span>.0 -f x86_64-<span class="number">1.0</span>.0</span><br></pre></td></tr></table></figure></p>
+<p>或者手动下载，下载完成修改所有的镜像tag为latest<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">docker pull hyperledger/fabric-orderer:x86_64-<span class="number">1.0</span>.0</span><br><span class="line">&amp;&amp;docker pull hyperledger/fabric-peer:x86_64-<span class="number">1.0</span>.0</span><br><span class="line">&amp;&amp;docker pull hyperledger/fabric-zookeeper:x86_64-<span class="number">1.0</span>.0</span><br><span class="line">&amp;&amp;docker pull hyperledger/fabric-couchdb:x86_64-<span class="number">1.0</span>.0</span><br><span class="line">&amp;&amp;docker pull hyperledger/fabric-kafka:x86_64-<span class="number">1.0</span>.0</span><br><span class="line">&amp;&amp;docker pull hyperledger/fabric-ca:x86_64-<span class="number">1.0</span>.0</span><br><span class="line">&amp;&amp;docker pull hyperledger/fabric-ccenv:x86_64-<span class="number">1.0</span>.0</span><br><span class="line">&amp;&amp;docker pull hyperledger/fabric-javaenv:x86_64-<span class="number">1.0</span>.0</span><br><span class="line"></span><br><span class="line">&amp;&amp;docker tag hyperledger/fabric-peer:x86_64-<span class="number">1.0</span>.0 hyperledger/fabric-peer:latest</span><br><span class="line">&amp;&amp;docker tag hyperledger/fabric-zookeeper:x86_64-<span class="number">1.0</span>.0 hyperledger/fabric-zookeeper:latest</span><br><span class="line">&amp;&amp;docker tag hyperledger/fabric-couchdb:x86_64-<span class="number">1.0</span>.0 hyperledger/fabric-couchdb:latest</span><br><span class="line">&amp;&amp;docker tag hyperledger/fabric-kafka:x86_64-<span class="number">1.0</span>.0 hyperledger/fabric-kafka:latest</span><br><span class="line">&amp;&amp;docker tag hyperledger/fabric-ca:x86_64-<span class="number">1.0</span>.0 hyperledger/fabric-ca:latest</span><br><span class="line">&amp;&amp;docker tag hyperledger/fabric-ccenv:x86_64-<span class="number">1.0</span>.0 hyperledger/fabric-ccenv:latest</span><br><span class="line">&amp;&amp;docker tag hyperledger/fabric-javaenv:x86_64-<span class="number">1.0</span>.0 hyperledger/fabric-javaenv:latest</span><br></pre></td></tr></table></figure></p>
+<p>2.docker-compose 配置文件准备<br>在Fabric的源码中，提供了单机部署4Peer+1Orderer的示例，在Example/e2e_cli文件夹中。我们可以在其中一台机器上运行单机的Fabric实例，确认无误后，在该机器上，生成公私钥，修改该机器中的Docker-compose配置文件，然后把这些文件分发给另外1台机器。我们就以orderer.example.com这台机器为例</p>
+<p>2.1单机运行4+1 Fabric实例，确保脚本和镜像正常</p>
+<p>我们先进入这个文件夹，然后直接运行</p>
+<p>这个命令可以在本机启动4+1的Fabric网络并且进行测试，跑Example02这个ChainCode。我们可以看到每一步的操作，最后确认单机没有问题。确认我们的镜像和脚本都是正常的，我们就可以关闭Fabric网络，继续我们的多机Fabric网络设置工作。：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">./network_setup.sh up</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">Exiting.....</span><br><span class="line">===================== Query on chaincode on PEER0 on channel 'wanda' is successful</span><br><span class="line">=====================</span><br><span class="line">===================== All GOOD, End-2-End execution completed</span><br><span class="line">=====================</span><br><span class="line"></span><br><span class="line">#执行完成后，关闭Fabric命令</span><br><span class="line">./network_setup.sh down</span><br></pre></td></tr></table></figure></p>
+<p>2.2生成公私钥、证书、创世区块等</p>
+<p>公私钥和证书是用于Server和Server之间的安全通信，另外要创建Channel并让其他节点加入Channel就需要创世区块，这些必备文件都可以一个命令生成，官方已经给出了脚本：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./generateArtifacts.sh mychannel</span><br></pre></td></tr></table></figure>
+<p>运行这个命令后，系统会创建channel-artifacts文件夹，里面包含了mychannel这个通道相关的文件，另外还有一个crypto-config文件夹，里面包含了各个节点的公私钥和证书的信息。</p>
+<p>2.3设置peer节点的docker-compose文件</p>
+<p>e2e_cli中提供了多个yaml文件，我们可以基于docker-compose-cli.yaml文件创建：</p>
+<p>cp docker-compose-cli.yaml docker-compose-peer.yaml<br>然后修改docker-compose-peer.yaml，去掉orderer的配置，只保留一个peer和cli，因为我们要多级部署，节点与节点之前又是通过主机名通讯，所以需要修改容器中的host文件，也就是extra_hosts设置，修改后的peer配置如下：</p>
+<p>peer0.org1.example.com:<br>  container_name: peer0.org1.example.com<br>  extends:<br>    file:  base/docker-compose-base.yaml<br>    service: peer0.org1.example.com<br>  extra_hosts:</p>
+<ul>
+<li>“orderer.example.com:10.174.13.185”<br>同样，cli也需要能够和各个节点通讯，所以cli下面也需要添加extra_hosts设置，去掉无效的依赖，并且去掉command这一行，因为我们是每个peer都会有个对应的客户端，也就是cli，所以我只需要去手动执行一次命令，而不是自动运行。修改后的cli配置如下：</li>
+</ul>
+<p>复制代码<br>cli:<br>  container_name: cli<br>  image: hyperledger/fabric-tools<br>  tty: true<br>  environment: </p>
+<pre><code>- GOPATH=/opt/gopath 
+- CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock 
+- CORE_LOGGING_LEVEL=DEBUG 
+- CORE_PEER_ID=cli 
+- CORE_PEER_ADDRESS=peer0.org1.example.com:7051 
+- CORE_PEER_LOCALMSPID=Org1MSP 
+- CORE_PEER_TLS_ENABLED=true 
+- CORE_PEER_TLS_CERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/server.crt 
+ - CORE_PEER_TLS_KEY_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/server.key 
+- CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt 
+- CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp 
+</code></pre><p>  working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer<br>  volumes: </p>
+<pre><code>- /var/run/:/host/var/run/ 
+- ../chaincode/go/:/opt/gopath/src/github.com/hyperledger/fabric/examples/chaincode/go 
+- ./crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ 
+- ./scripts:/opt/gopath/src/github.com/hyperledger/fabric/peer/scripts/ 
+- ./channel-artifacts:/opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts 
+</code></pre><p>  depends_on: </p>
+<pre><code>- peer0.org1.example.com 
+</code></pre><p>  extra_hosts: </p>
+<ul>
+<li>“orderer.example.com:10.174.13.185” </li>
+<li>“peer0.org1.example.com:10.51.120.220” </li>
+<li>“peer1.org1.example.com:10.51.126.19” </li>
+<li>“peer0.org2.example.com:10.51.116.133” </li>
+<li>“peer1.org2.example.com:10.51.126.5”<br>复制代码<br>在单击模式下，4个peer会映射主机不同的端口，但是我们在多机部署的时候是不需要映射不同端口的，所以需要修改base/docker-compose-base.yaml文件，将所有peer的端口映射都改为相同的：</li>
+</ul>
+<p>ports: </p>
+<ul>
+<li>7051:7051 </li>
+<li>7052:7052 </li>
+<li>7053:7053<br>2.4设置orderer节点的docker-compose文件</li>
+</ul>
+<p>与创建peer的配置文件类似，我们也复制一个yaml文件出来进行修改：</p>
+<p>cp docker-compose-cli.yaml docker-compose-orderer.yaml<br>orderer服务器上我们只需要保留order设置，其他peer和cli设置都可以删除。orderer可以不设置extra_hosts。</p>
+<p>2.5分发配置文件</p>
+<p>前面4步的操作，我们都是在orderer.example.com上完成的，接下来我们需要将这些文件分发到另外4台服务器上。Linux之间的文件传输，我们可以使用scp命令。</p>
+<p>我先登录peer0.org1.example.com，将本地的e2e_cli文件夹删除：</p>
+<p>rm e2e_cli –R<br>然后再登录到orderer服务器上，退回到examples文件夹，因为这样可以方便的把其下的e2e_cli文件夹整个传到peer0服务器上。</p>
+<p>scp -r e2e_cli fabric@10.51.120.220:/home/fabric/go/src/github.com/hyperledger/fabric/examples/<br>我们在前面配置的就是peer0.org1.example.com上的节点，所以复制过来后不需要做任何修改。</p>
+<p>再次运行scp命令，复制到peer1.org1.example.com上，然后我们需要对docker-compose-peer.yaml做一个小小的修改，将启动的容器改为peer1.org1.example.com，并且添加peer0.org1.example.com的IP映射，对应的cli中也改成对peer1.org1.example.com的依赖。这是修改后的peer1.org1.example.com上的配置文件：</p>
+<p>复制代码<br>version: ‘2’</p>
+<p>services:</p>
+<p>  peer1.org1.example.com:<br>    container_name: peer1.org1.example.com<br>    extends:<br>      file:  base/docker-compose-base.yaml<br>      service: peer1.org1.example.com<br>    extra_hosts: </p>
+<pre><code>- &quot;orderer.example.com:10.174.13.185&quot; 
+- &quot;peer0.org1.example.com:10.51.120.220&quot;
+</code></pre><p>  cli:<br>    container_name: cli<br>    image: hyperledger/fabric-tools<br>    tty: true<br>    environment: </p>
+<pre><code>  - GOPATH=/opt/gopath 
+  - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock 
+  - CORE_LOGGING_LEVEL=DEBUG 
+  - CORE_PEER_ID=cli 
+  - CORE_PEER_ADDRESS=peer1.org1.example.com:7051 
+  - CORE_PEER_LOCALMSPID=Org1MSP 
+  - CORE_PEER_TLS_ENABLED=true 
+  - CORE_PEER_TLS_CERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/tls/server.crt 
+  - CORE_PEER_TLS_KEY_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/tls/server.key 
+  - CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/tls/ca.crt 
+  - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp 
+working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer 
+volumes: 
+    - /var/run/:/host/var/run/ 
+    - ../chaincode/go/:/opt/gopath/src/github.com/hyperledger/fabric/examples/chaincode/go 
+     - ./crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ 
+    - ./scripts:/opt/gopath/src/github.com/hyperledger/fabric/peer/scripts/ 
+    - ./channel-artifacts:/opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts 
+depends_on: 
+  - peer1.org1.example.com 
+extra_hosts: 
+ - &quot;orderer.example.com:10.174.13.185&quot; 
+ - &quot;peer0.org1.example.com:10.51.120.220&quot; 
+ - &quot;peer1.org1.example.com:10.51.126.19&quot; 
+ - &quot;peer0.org2.example.com:10.51.116.133&quot; 
+ - &quot;peer1.org2.example.com:10.51.126.5&quot;
+</code></pre><p>复制代码<br>接下来继续使用scp命令将orderer上的文件夹传送给peer0.org2.example.com和peer1.org2.example.com，然后也是修改一下docker-compose-peer.yaml文件，使得其启动对应的peer节点。</p>
+<p>  3.启动Fabric<br>现在所有文件都已经准备完毕，我们可以启动我们的Fabric网络了。</p>
+<p>3.1启动orderer</p>
+<p>让我们首先来启动orderer节点，在orderer服务器上运行：</p>
+<p>docker-compose -f docker-compose-orderer.yaml up –d<br>运行完毕后我们可以使用docker ps看到运行了一个名字为orderer.example.com的节点。</p>
+<p>3.2启动peer</p>
+<p>然后我们切换到peer0.org1.example.com服务器，启动本服务器的peer节点和cli，命令为：</p>
+<p>docker-compose -f docker-compose-peer.yaml up –d<br>运行完毕后我们使用docker ps应该可以看到2个正在运行的容器。</p>
+<p>接下来依次在另外3台服务器运行启动peer节点容器的命令：</p>
+<p>docker-compose -f docker-compose-peer.yaml up –d<br>现在我们整个Fabric4+1服务器网络已经成型，接下来是创建channel和运行ChainCode。</p>
+<p>3.3创建Channel测试ChainCode</p>
+<p>我们切换到peer0.org1.example.com服务器上，使用该服务器上的cli来运行创建Channel和运行ChainCode的操作。首先进入cli容器：</p>
+<p>docker exec -it cli bash<br>进入容器后我们可以看到命令提示变为：</p>
+<p>root@b41e67d40583:/opt/gopath/src/github.com/hyperledger/fabric/peer#</p>
+<p>说明我们已经以root的身份进入到cli容器内部。官方已经提供了完整的创建Channel和测试ChainCode的脚本，并且已经映射到cli容器内部，所以我们只需要在cli内运行如下命令：</p>
+<p>./scripts/script.sh mychannel<br>那么该脚本就可以一步一步的完成创建通道，将其他节点加入通道，更新锚节点，创建ChainCode，初始化账户，查询，转账，再次查询等链上代码的各个操作都可以自动化实现。直到最后，系统提示：</p>
+<p>===================== All GOOD, End-2-End execution completed =====================</p>
+<p>说明我们的4+1的Fabric多级部署成功了。我们现在是在peer0.org1.example.com的cli容器内，我们也可以切换到peer0.org2.example.com服务器，运行docker ps命令，可以看到本来是2个容器的，现在已经变成了3个容器，因为ChainCode会创建一个容器：</p>
+<p>docker ps<br>CONTAINER ID        IMAGE                                 COMMAND                  CREATED             STATUS              PORTS                              NAMES<br>add457f79d57        dev-peer0.org2.example.com-mycc-1.0   “chaincode -peer.a…”   11 minutes ago      Up 11 minutes                                          dev-peer0.org2.example.com-mycc-1.0<br>0c06fb8e8f20        hyperledger/fabric-tools              “/bin/bash”              13 minutes ago      Up 13 minutes                                          cli<br>632c3e5d3a5e        hyperledger/fabric-peer               “peer node start”        13 minutes ago      Up 13 minutes       0.0.0.0:7051-7053-&gt;7051-7053/tcp   peer0.org2.example.com</p>
+<p>4.总结<br>我在Fabric多机部署的过程中还是遇到了不少坑，前前后后花了2天的时间才趟坑完毕，实现了最终的4+1多机部署。其中与单机部署最大的不同的地方就是在单机部署的时候，我们是在同一个docker网络中，所以相互之间通过主机名通讯很容易，而在多机环境中，就需要额外设置DNS或者就是通过extra_hosts参数，设置容器中的hosts文件。而且不能一股脑的就跟cli一样把5台机器的域名IP配置到peer中，那样会报错的，所以只需要设置需要的即可。</p>
+<p>官方给的脚本已经替我们做了很多工作，同时也隐藏了很多细节，所以我们并没有真正了解其内部的实现过程，我以后会再写一篇博客详细介绍Fabric多机部署的详细过程。为了方便，我把设计到的几个docker-compose文件打包了一份放出来，如果大家想进行同样的部署，只需要修改一下IP即可复用。</p>
+<p>Docker-compose下载</p>
+<p> 最后，大家如果想进一步探讨Fabric或者使用中遇到什么问题可以加入QQ群【494085548】大家一起讨论。</p>
+
+      
+    </div>
+
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Fabric-1-0多机部署/" rel="tag">#Fabric 1.0多机部署</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/31/2017个人目标/" rel="next" title="2017 Blog目标">
+                <i class="fa fa-chevron-left"></i> 2017 Blog目标
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+
+    <div>
+      
+        
+      
+    </div>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2018/03/20/install-hyperledger-fabric-1.0-multi/"
+     data-title="Fabric 1.0多机部署"
+     data-content=""
+     data-url="http://yoursite.com/2018/03/20/install-hyperledger-fabric-1.0-multi/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2018/03/20/install-hyperledger-fabric-1.0-multi/"
+           data-title="Fabric 1.0多机部署" data-url="http://yoursite.com/2018/03/20/install-hyperledger-fabric-1.0-multi/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/logo.png"
+               alt="xyl" />
+          <p class="site-author-name" itemprop="name">xyl</p>
+          <p class="site-description motion-element" itemprop="description">xyl个人网站</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/liang55" target="_blank" title="github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/577008004" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/_xyl" target="_blank" title="zhihu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  zhihu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/youl.xiong" target="_blank" title="facebook">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://play.google.com/store/apps/details?id=com.anjoyo.xyl.run" target="_blank" title="google">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  google
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xyl</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+    
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"xyl-blog"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("vJrqFORgAlXG0sDsjErR2kap-gzGzoHsz", "Tb1YhTnA02XSBLX3EQLes5Qg");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
