@@ -87,10 +87,10 @@
 <meta name="description" content="1.环境准备我们要部署的是1Peer+1Orderer的架构，需要准备2台机器，可以开2台虚拟机，也可以购买2台云服务器。不管怎么样，我们需要这2台机器网络能够互通，而且安装相同的系统，我用的是CentOS7.1 (docker要求内核在3.10以上，6.5内核是2.6需要升级,查看升级教程)、内核3.10.0-693.el7.x86_64。为了方便，我先启用1台虚拟机把环境搭建好，然后再复制出1">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Fabric 1.0环境">
-<meta property="og:url" content="http://yoursite.com/2018/03/20/install-hyperledger-fabric-1.0-multi/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/03/20/install-hyperledger-fabric-1.0/index.html">
 <meta property="og:site_name" content="xyl-blog">
 <meta property="og:description" content="1.环境准备我们要部署的是1Peer+1Orderer的架构，需要准备2台机器，可以开2台虚拟机，也可以购买2台云服务器。不管怎么样，我们需要这2台机器网络能够互通，而且安装相同的系统，我用的是CentOS7.1 (docker要求内核在3.10以上，6.5内核是2.6需要升级,查看升级教程)、内核3.10.0-693.el7.x86_64。为了方便，我先启用1台虚拟机把环境搭建好，然后再复制出1">
-<meta property="og:updated_time" content="2018-03-21T10:46:07.757Z">
+<meta property="og:updated_time" content="2018-03-21T10:47:50.273Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Fabric 1.0环境">
 <meta name="twitter:description" content="1.环境准备我们要部署的是1Peer+1Orderer的架构，需要准备2台机器，可以开2台虚拟机，也可以购买2台云服务器。不管怎么样，我们需要这2台机器网络能够互通，而且安装相同的系统，我用的是CentOS7.1 (docker要求内核在3.10以上，6.5内核是2.6需要升级,查看升级教程)、内核3.10.0-693.el7.x86_64。为了方便，我先启用1台虚拟机把环境搭建好，然后再复制出1">
@@ -114,7 +114,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/20/install-hyperledger-fabric-1.0-multi/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/20/install-hyperledger-fabric-1.0/"/>
 
   <title> Fabric 1.0环境 | xyl-blog </title>
 </head>
@@ -338,8 +338,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2018/03/20/install-hyperledger-fabric-1.0-multi/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/03/20/install-hyperledger-fabric-1.0-multi/" itemprop="commentsCount"></span>
+                <a href="/2018/03/20/install-hyperledger-fabric-1.0/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/03/20/install-hyperledger-fabric-1.0/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -349,7 +349,7 @@
 
           
           
-             <span id="/2018/03/20/install-hyperledger-fabric-1.0-multi/" class="leancloud_visitors" data-flag-title="Fabric 1.0环境">
+             <span id="/2018/03/20/install-hyperledger-fabric-1.0/" class="leancloud_visitors" data-flag-title="Fabric 1.0环境">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -414,7 +414,7 @@
 <p>e2e_cli中提供了多个yaml文件，我们可以基于docker-compose-cli.yaml文件创建：</p>
 <p>cp docker-compose-cli.yaml docker-compose-peer.yaml<br>然后修改docker-compose-peer.yaml，去掉orderer的配置，只保留一个peer和cli，因为我们要多级部署，节点与节点之前又是通过主机名通讯，所以需要修改容器中的host文件，也就是extra_hosts设置，修改后的peer配置如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">peer0.org1.example.com:</span><br><span class="line">  container_name: peer0.org1.example.com</span><br><span class="line">  extends:</span><br><span class="line">    file:  base/docker-compose-base.yaml</span><br><span class="line">    service: peer0.org1.example.com</span><br><span class="line">  extra_hosts:</span><br><span class="line">	- <span class="string">"orderer.example.com:192.168.1.9"</span></span><br></pre></td></tr></table></figure></p>
 <p>同样，cli也需要能够和各个节点通讯，所以cli下面也需要添加extra_hosts设置，去掉无效的依赖，并且去掉command这一行，因为我们是每个peer都会有个对应的客户端，也就是cli，所以我只需要去手动执行一次命令，而不是自动运行。修改后的cli配置如下：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">cli: </span><br><span class="line">  container_name: cli </span><br><span class="line">  image: hyperledger/fabric-tools </span><br><span class="line">  tty: true </span><br><span class="line">  environment: </span><br><span class="line">    - GOPATH=/opt/gopath </span><br><span class="line">    - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock </span><br><span class="line">    - CORE_LOGGING_LEVEL=DEBUG </span><br><span class="line">    - CORE_PEER_ID=cli </span><br><span class="line">    - CORE_PEER_ADDRESS=peer0.org1.example.com:7051 </span><br><span class="line">    - CORE_PEER_LOCALMSPID=Org1MSP </span><br><span class="line">    - CORE_PEER_TLS_ENABLED=true </span><br><span class="line">    - CORE_PEER_TLS_CERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/server.crt </span><br><span class="line">     - CORE_PEER_TLS_KEY_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/server.key </span><br><span class="line">    - CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt </span><br><span class="line">    - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp </span><br><span class="line">  working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer </span><br><span class="line">  volumes: </span><br><span class="line">      - /var/run/:/host/var/run/ </span><br><span class="line">      - ../chaincode/go/:/opt/gopath/src/github.com/hyperledger/fabric/examples/chaincode/go </span><br><span class="line">      - ./crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ </span><br><span class="line">      - ./scripts:/opt/gopath/src/github.com/hyperledger/fabric/peer/scripts/ </span><br><span class="line">      - ./channel-artifacts:/opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts </span><br><span class="line">  _#command: /bin/bash -c './scripts/script.sh $&#123;CHANNEL_NAME&#125;; sleep $TIMEOUT'_</span><br><span class="line">  depends_on: </span><br><span class="line">    - peer0.org1.example.com </span><br><span class="line">  extra_hosts: </span><br><span class="line">   - "orderer.example.com:192.168.1.9" </span><br><span class="line">   - "peer0.org1.example.com:192.168.1.10" </span><br><span class="line">   #- "peer1.org1.example.com:192.168.1.10" </span><br><span class="line">   #- "peer0.org2.example.com:192.168.1.10" </span><br><span class="line">   #- "peer1.org2.example.com:192.168.1.10"</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">cli: </span><br><span class="line">  container_name: cli </span><br><span class="line">  image: hyperledger/fabric-tools </span><br><span class="line">  tty: true </span><br><span class="line">  environment: </span><br><span class="line">    - GOPATH=/opt/gopath </span><br><span class="line">    - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock </span><br><span class="line">    - CORE_LOGGING_LEVEL=DEBUG </span><br><span class="line">    - CORE_PEER_ID=cli </span><br><span class="line">    - CORE_PEER_ADDRESS=peer0.org1.example.com:7051 </span><br><span class="line">    - CORE_PEER_LOCALMSPID=Org1MSP </span><br><span class="line">    - CORE_PEER_TLS_ENABLED=true </span><br><span class="line">    - CORE_PEER_TLS_CERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/server.crt </span><br><span class="line">     - CORE_PEER_TLS_KEY_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/server.key </span><br><span class="line">    - CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt </span><br><span class="line">    - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp </span><br><span class="line">  working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer </span><br><span class="line">  volumes: </span><br><span class="line">      - /var/run/:/host/var/run/ </span><br><span class="line">      - ../chaincode/go/:/opt/gopath/src/github.com/hyperledger/fabric/examples/chaincode/go </span><br><span class="line">      - ./crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ </span><br><span class="line">      - ./scripts:/opt/gopath/src/github.com/hyperledger/fabric/peer/scripts/ </span><br><span class="line">      - ./channel-artifacts:/opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts </span><br><span class="line">  #command: /bin/bash -c './scripts/script.sh $&#123;CHANNEL_NAME&#125;; sleep $TIMEOUT'</span><br><span class="line">  depends_on: </span><br><span class="line">    - peer0.org1.example.com </span><br><span class="line">  extra_hosts: </span><br><span class="line">   - "orderer.example.com:192.168.1.9" </span><br><span class="line">   - "peer0.org1.example.com:192.168.1.10" </span><br><span class="line">   #- "peer1.org1.example.com:192.168.1.10" </span><br><span class="line">   #- "peer0.org2.example.com:192.168.1.10" </span><br><span class="line">   #- "peer1.org2.example.com:192.168.1.10"</span><br></pre></td></tr></table></figure>
 <p>2.4设置orderer节点的docker-compose文件<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp docker-compose-cli.yaml docker-compose-orderer.yaml</span><br></pre></td></tr></table></figure></p>
 <p>orderer服务器上我们只需要保留order设置，其他peer和cli设置都可以删除。orderer可以不设置extra_hosts。</p>
 <p>2.5分发配置文件</p>
@@ -511,10 +511,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2018/03/20/install-hyperledger-fabric-1.0-multi/"
+        <div class="ds-share flat" data-thread-key="2018/03/20/install-hyperledger-fabric-1.0/"
      data-title="Fabric 1.0环境"
      data-content=""
-     data-url="http://yoursite.com/2018/03/20/install-hyperledger-fabric-1.0-multi/">
+     data-url="http://yoursite.com/2018/03/20/install-hyperledger-fabric-1.0/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -544,8 +544,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2018/03/20/install-hyperledger-fabric-1.0-multi/"
-           data-title="Fabric 1.0环境" data-url="http://yoursite.com/2018/03/20/install-hyperledger-fabric-1.0-multi/">
+      <div class="ds-thread" data-thread-key="2018/03/20/install-hyperledger-fabric-1.0/"
+           data-title="Fabric 1.0环境" data-url="http://yoursite.com/2018/03/20/install-hyperledger-fabric-1.0/">
       </div>
     
   </div>
