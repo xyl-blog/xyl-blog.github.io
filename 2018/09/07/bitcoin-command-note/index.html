@@ -1,0 +1,913 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Bitcoin系列钱包命令," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="关于比特币系列钱包的bitcoin-cli 命令全集。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bitcoin系列钱包命令">
+<meta property="og:url" content="http://yoursite.com/2018/09/07/bitcoin-command-note/index.html">
+<meta property="og:site_name" content="xyl-blog">
+<meta property="og:description" content="关于比特币系列钱包的bitcoin-cli 命令全集。">
+<meta property="og:updated_time" content="2018-09-07T08:13:00.415Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Bitcoin系列钱包命令">
+<meta name="twitter:description" content="关于比特币系列钱包的bitcoin-cli 命令全集。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6263950864822568000,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/09/07/bitcoin-command-note/"/>
+
+  <title> Bitcoin系列钱包命令 | xyl-blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?69405dd561a0561e10fd03653d20cbdb";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">xyl-blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">xyl-blog</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'sDJjoMPPTt5-xrjzZPT3','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Bitcoin系列钱包命令
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-09-07T21:02:18+08:00" content="2018-09-07">
+              2018-09-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Bitcoin/" itemprop="url" rel="index">
+                    <span itemprop="name">Bitcoin</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/09/07/bitcoin-command-note/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/09/07/bitcoin-command-note/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2018/09/07/bitcoin-command-note/" class="leancloud_visitors" data-flag-title="Bitcoin系列钱包命令">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>关于比特币系列钱包的bitcoin-cli 命令全集。</p>
+<a id="more"></a>
+<h2 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h2><p>在使用bitcoin-cli命令时，钱包不在默认路径需要使用绝对路径配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bitcoin-cli --datadir=/www/bitcoin/data/</span><br></pre></td></tr></table></figure>
+<p>查看钱包支持的命令</p>
+<p>./bitcoind help</p>
+<p>####A、一般性的命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">stop</span><br><span class="line">getinfo</span><br><span class="line">ping</span><br><span class="line">getnettotals</span><br><span class="line">getnetworkinfo</span><br><span class="line">getpeerinfo</span><br><span class="line">getconnectioncount</span><br><span class="line">verifychain ( checklevel numblocks )</span><br><span class="line">getaddednodeinfo dns ( &quot;node&quot; )</span><br><span class="line">addnode &quot;node&quot; &quot;add|remove|onetry&quot;</span><br></pre></td></tr></table></figure>
+<p>####B、钱包、账户、地址、转帐、发消息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">getwalletinfo</span><br><span class="line">walletpassphrase &quot;passphrase&quot; timeout</span><br><span class="line">walletlock</span><br><span class="line">walletpassphrasechange &quot;oldpassphrase&quot; &quot;newpassphrase&quot;</span><br><span class="line">backupwallet &quot;destination&quot;</span><br><span class="line">importwallet &quot;filename&quot;</span><br><span class="line">dumpwallet &quot;filename&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">listaccounts ( minconf )</span><br><span class="line">getaddressesbyaccount &quot;account&quot;</span><br><span class="line">getaccountaddress &quot;account&quot;</span><br><span class="line">getaccount &quot;bitcoinaddress&quot;</span><br><span class="line">validateaddress &quot;bitcoinaddress&quot;</span><br><span class="line">dumpprivkey &quot;bitcoinaddress&quot;</span><br><span class="line">setaccount &quot;bitcoinaddress&quot; &quot;account&quot;</span><br><span class="line">getnewaddress ( &quot;account&quot; )</span><br><span class="line">keypoolrefill ( newsize )</span><br><span class="line">importprivkey &quot;bitcoinprivkey&quot; ( &quot;label&quot; rescan )</span><br><span class="line">createmultisig nrequired [&quot;key&quot;,...]</span><br><span class="line">addmultisigaddress nrequired [&quot;key&quot;,...] ( &quot;account&quot; )</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">getbalance ( &quot;account&quot; minconf )</span><br><span class="line">getunconfirmedbalance</span><br><span class="line">getreceivedbyaccount &quot;account&quot; ( minconf )</span><br><span class="line">listreceivedbyaccount ( minconf includeempty )</span><br><span class="line">getreceivedbyaddress &quot;bitcoinaddress&quot; ( minconf )</span><br><span class="line">listreceivedbyaddress ( minconf includeempty )</span><br><span class="line">move &quot;fromaccount&quot; &quot;toaccount&quot; amount ( minconf &quot;comment&quot; )</span><br><span class="line">listunspent ( minconf maxconf  [&quot;address&quot;,...] )</span><br><span class="line">listlockunspent</span><br><span class="line">lockunspent unlock [&#123;&quot;txid&quot;:&quot;txid&quot;,&quot;vout&quot;:n&#125;,...]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">getrawchangeaddress</span><br><span class="line">listaddressgroupings</span><br><span class="line">settxfee amount</span><br><span class="line">sendtoaddress &quot;bitcoinaddress&quot; amount ( &quot;comment&quot; &quot;comment-to&quot; )</span><br><span class="line">sendfrom &quot;fromaccount&quot; &quot;tobitcoinaddress&quot; amount ( minconf &quot;comment&quot; &quot;comment-to&quot; )</span><br><span class="line">sendmany &quot;fromaccount&quot; &#123;&quot;address&quot;:amount,...&#125; ( minconf &quot;comment&quot; )</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">signmessage &quot;bitcoinaddress&quot; &quot;message&quot;</span><br><span class="line">verifymessage &quot;bitcoinaddress&quot; &quot;signature&quot; &quot;message&quot;</span><br></pre></td></tr></table></figure>
+<p>####C、Tx、Block、Ming</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">createrawtransaction [&#123;&quot;txid&quot;:&quot;id&quot;,&quot;vout&quot;:n&#125;,...] &#123;&quot;address&quot;:amount,...&#125;</span><br><span class="line">signrawtransaction &quot;hexstring&quot; ( [&#123;&quot;txid&quot;:&quot;id&quot;,&quot;vout&quot;:n,&quot;scriptPubKey&quot;:&quot;hex&quot;,&quot;redeemScript&quot;:&quot;hex&quot;&#125;,...] [&quot;privatekey1&quot;,...] sighashtype )</span><br><span class="line">sendrawtransaction &quot;hexstring&quot; ( allowhighfees )</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gettransaction &quot;txid&quot;</span><br><span class="line">listtransactions ( &quot;account&quot; count from )</span><br><span class="line">listsinceblock ( &quot;blockhash&quot; target-confirmations )</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">getrawmempool ( verbose )</span><br><span class="line">gettxoutsetinfo</span><br><span class="line">gettxout &quot;txid&quot; n ( includemempool )</span><br><span class="line">getrawtransaction &quot;txid&quot; ( verbose )</span><br><span class="line">decoderawtransaction &quot;hexstring&quot;</span><br><span class="line">decodescript &quot;hex&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">getblockchaininfo</span><br><span class="line">getblockcount</span><br><span class="line">getbestblockhash</span><br><span class="line">getblockhash index</span><br><span class="line">getblock &quot;hash&quot; ( verbose )</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">getmininginfo</span><br><span class="line">getdifficulty</span><br><span class="line">getnetworkhashps ( blocks height )</span><br><span class="line">gethashespersec</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">getgenerate</span><br><span class="line">setgenerate generate ( genproclimit )</span><br><span class="line">getwork ( &quot;data&quot; )</span><br><span class="line">getblocktemplate ( &quot;jsonrequestobject&quot; )</span><br><span class="line">submitblock &quot;hexdata&quot; ( &quot;jsonparametersobject&quot; )</span><br></pre></td></tr></table></figure>
+<p>== Blockchain ==<br>getbestblockhash<br>getblock “hash” ( verbose )<br>getblockchaininfo<br>getblockcount<br>getblockhash index<br>getblockheader “hash” ( verbose )<br>getchaintips<br>getdifficulty<br>getmempoolinfo<br>getrawmempool ( verbose )<br>gettxout “txid” n ( includemempool )<br>gettxoutsetinfo<br>verifychain ( checklevel numblocks )</p>
+<p>== Bulwark ==<br>checkbudgets<br>createmasternodekey<br>getbudgetinfo ( “proposal” )<br>getbudgetprojection<br>getbudgetvotes “proposal-name”<br>getmasternodecount<br>getmasternodeoutputs<br>getmasternodescores ( blocks )<br>getmasternodestatus<br>getmasternodewinners ( blocks “filter” )<br>getnextsuperblock<br>getpoolinfo<br>listmasternodeconf ( “filter” )<br>listmasternodes ( “filter” )<br>masternode “command”…<br>masternodeconnect “address”<br>masternodecurrent<br>masternodedebug<br>mnbudget “command”… ( “passphrase” )<br>mnbudgetrawvote “masternode-tx-hash” masternode-tx-index “proposal-hash” yes|no time “vote-sig”<br>mnbudgetvote “local|many|alias” “votehash” “yes|no” ( “alias” )<br>mnfinalbudget “command”… ( “passphrase” )<br>mnsync “status|reset”<br>obfuscation <bulwarkaddress> <amount><br>preparebudget “proposal-name” “url” payment-count block-start “bulwark-address” monthy-payment<br>spork <name> [<value>]<br>startmasternode “local|all|many|missing|disabled|alias” lockwallet ( “alias” )<br>submitbudget “proposal-name” “url” payment-count block-start “bulwark-address” monthy-payment “fee-tx”</value></name></amount></bulwarkaddress></p>
+<p>== Control ==<br>getinfo<br>help ( “command” )<br>stop</p>
+<p>== Generating ==<br>getgenerate<br>gethashespersec<br>setgenerate generate ( genproclimit )</p>
+<p>== Mining ==<br>getblocktemplate ( “jsonrequestobject” )<br>getmininginfo<br>getnetworkhashps ( blocks height )<br>prioritisetransaction <txid> <priority delta=""> <fee delta=""><br>reservebalance ( reserve amount )<br>submitblock “hexdata” ( “jsonparametersobject” )</fee></priority></txid></p>
+<p>== Network ==<br>addnode “node” “add|remove|onetry”<br>clearbanned<br>getaddednodeinfo dns ( “node” )<br>getconnectioncount<br>getnettotals<br>getnetworkinfo<br>getpeerinfo<br>listbanned<br>ping<br>setban “ip(/netmask)” “add|remove” (bantime) (absolute)</p>
+<p>== Rawtransactions ==<br>createrawtransaction [{“txid”:”id”,”vout”:n},…] {“address”:amount,…}<br>decoderawtransaction “hexstring”<br>decodescript “hex”<br>getrawtransaction “txid” ( verbose )<br>sendrawtransaction “hexstring” ( allowhighfees )<br>signrawtransaction “hexstring” ( [{“txid”:”id”,”vout”:n,”scriptPubKey”:”hex”,”redeemScript”:”hex”},…] [“privatekey1”,…] sighashtype )</p>
+<p>== Util ==<br>createmultisig nrequired [“key”,…]<br>estimatefee nblocks<br>estimatepriority nblocks<br>validateaddress “bulwarkaddress”<br>verifymessage “bulwarkaddress” “signature” “message”</p>
+<p>== Wallet ==<br>addmultisigaddress nrequired [“key”,…] ( “account” )<br>autocombinerewards true|false ( threshold )<br>backupwallet “destination”<br>bip38decrypt “bulwarkaddress”<br>bip38encrypt “bulwarkaddress”<br>dumpprivkey “bulwarkaddress”<br>dumpwallet “filename”<br>getaccount “bulwarkaddress”<br>getaccountaddress “account”<br>getaddressesbyaccount “account”<br>getbalance ( “account” minconf includeWatchonly )<br>getnewaddress ( “account” )<br>getrawchangeaddress<br>getreceivedbyaccount “account” ( minconf )<br>getreceivedbyaddress “bulwarkaddress” ( minconf )<br>getstakesplitthreshold<br>getstakingstatus<br>gettransaction “txid” ( includeWatchonly )<br>getunconfirmedbalance<br>getwalletinfo<br>importaddress “address” ( “label” rescan )<br>importprivkey “bulwarkprivkey” ( “label” rescan )<br>importwallet “filename”<br>keypoolrefill ( newsize )<br>listaccounts ( minconf includeWatchonly)<br>listaddressgroupings<br>listlockunspent<br>listreceivedbyaccount ( minconf includeempty includeWatchonly)<br>listreceivedbyaddress ( minconf includeempty includeWatchonly)<br>listsinceblock ( “blockhash” target-confirmations includeWatchonly)<br>listtransactions ( “account” count from includeWatchonly)<br>listunspent ( minconf maxconf  [“address”,…] )<br>lockunspent unlock [{“txid”:”txid”,”vout”:n},…]<br>move “fromaccount” “toaccount” amount ( minconf “comment” )<br>multisend <command><br>sendfrom “fromaccount” “tobulwarkaddress” amount ( minconf “comment” “comment-to” )<br>sendmany “fromaccount” {“address”:amount,…} ( minconf “comment” )<br>sendtoaddress “bulwarkaddress” amount ( “comment” “comment-to” )<br>sendtoaddressix “bulwarkaddress” amount ( “comment” “comment-to” )<br>setaccount “bulwarkaddress” “account”<br>setstakesplitthreshold value<br>settxfee amount<br>signmessage “bulwarkaddress” “message”<br>walletlock<br>walletpassphrase “passphrase” timeout ( anonymizeonly )<br>walletpassphrasechange “oldpassphrase” “newpassphrase”</p>
+
+      
+    </div>
+
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Bitcoin系列钱包命令/" rel="tag">#Bitcoin系列钱包命令</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/07/nomp-note/" rel="next" title="搭建山寨币NOMP矿池教程">
+                <i class="fa fa-chevron-left"></i> 搭建山寨币NOMP矿池教程
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/07/install-bitcoin-wallet-note/" rel="prev" title="Bitcoin系列钱包安装">
+                Bitcoin系列钱包安装 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+
+    <div>
+      
+        
+      
+    </div>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2018/09/07/bitcoin-command-note/"
+     data-title="Bitcoin系列钱包命令"
+     data-content=""
+     data-url="http://yoursite.com/2018/09/07/bitcoin-command-note/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2018/09/07/bitcoin-command-note/"
+           data-title="Bitcoin系列钱包命令" data-url="http://yoursite.com/2018/09/07/bitcoin-command-note/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/logo.png"
+               alt="xyl" />
+          <p class="site-author-name" itemprop="name">xyl</p>
+          <p class="site-description motion-element" itemprop="description">xyl个人网站</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/liang55" target="_blank" title="github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/577008004" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/_xyl" target="_blank" title="zhihu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  zhihu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/youl.xiong" target="_blank" title="facebook">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://play.google.com/store/apps/details?id=com.anjoyo.xyl.run" target="_blank" title="google">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  google
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Note"><span class="nav-number">1.</span> <span class="nav-text">Note</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xyl</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+    
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"xyl-blog"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("vJrqFORgAlXG0sDsjErR2kap-gzGzoHsz", "Tb1YhTnA02XSBLX3EQLes5Qg");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
