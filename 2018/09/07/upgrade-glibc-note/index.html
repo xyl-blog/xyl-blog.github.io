@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Centos6.5 升级glibc报错问题," />
 
 
 
@@ -84,15 +84,19 @@
 
 
 
-<meta name="description" content="xyl个人网站">
-<meta property="og:type" content="website">
-<meta property="og:title" content="xyl-blog">
-<meta property="og:url" content="http://yoursite.com/page/3/index.html">
+<meta name="description" content="同事说线上有台服务器跑程序报错，信息如下：./agent: /lib64/libc.so.6: version `GLIBC_2.14’ not found 
+从上面报错可以看出，程序运行时候，没有找到“GLIBC_2.14”这个版本库，而默认的Centos6.5 glibc版本最高为2.12, 所以需要更新系统glibc库。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Centos6.5 升级glibc报错问题">
+<meta property="og:url" content="http://yoursite.com/2018/09/07/upgrade-glibc-note/index.html">
 <meta property="og:site_name" content="xyl-blog">
-<meta property="og:description" content="xyl个人网站">
+<meta property="og:description" content="同事说线上有台服务器跑程序报错，信息如下：./agent: /lib64/libc.so.6: version `GLIBC_2.14’ not found 
+从上面报错可以看出，程序运行时候，没有找到“GLIBC_2.14”这个版本库，而默认的Centos6.5 glibc版本最高为2.12, 所以需要更新系统glibc库。">
+<meta property="og:updated_time" content="2018-09-10T04:29:33.569Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="xyl-blog">
-<meta name="twitter:description" content="xyl个人网站">
+<meta name="twitter:title" content="Centos6.5 升级glibc报错问题">
+<meta name="twitter:description" content="同事说线上有台服务器跑程序报错，信息如下：./agent: /lib64/libc.so.6: version `GLIBC_2.14’ not found 
+从上面报错可以看出，程序运行时候，没有找到“GLIBC_2.14”这个版本库，而默认的Centos6.5 glibc版本最高为2.12, 所以需要更新系统glibc库。">
 
 
 
@@ -113,9 +117,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/page/3/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/07/upgrade-glibc-note/"/>
 
-  <title> xyl-blog </title>
+  <title> Centos6.5 升级glibc报错问题 | xyl-blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -146,9 +150,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -275,9 +277,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -297,10 +299,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/06/17/Hadoop权威指南/" itemprop="url">
-                  Hadoop权威指南
-                </a>
+                Centos6.5 升级glibc报错问题
               
             
           </h1>
@@ -312,8 +311,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-17T21:41:09+08:00" content="2016-06-17">
-              2016-06-17
+            <time itemprop="dateCreated" datetime="2018-09-07T21:47:18+08:00" content="2018-09-07">
+              2018-09-07
             </time>
           </span>
 
@@ -326,8 +325,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">读书笔记</span>
+                  <a href="/categories/工作/" itemprop="url" rel="index">
+                    <span itemprop="name">工作</span>
                   </a>
                 </span>
 
@@ -342,8 +341,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/06/17/Hadoop权威指南/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/17/Hadoop权威指南/" itemprop="commentsCount"></span>
+                <a href="/2018/09/07/upgrade-glibc-note/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/09/07/upgrade-glibc-note/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -353,7 +352,7 @@
 
           
           
-             <span id="/2016/06/17/Hadoop权威指南/" class="leancloud_visitors" data-flag-title="Hadoop权威指南">
+             <span id="/2018/09/07/upgrade-glibc-note/" class="leancloud_visitors" data-flag-title="Centos6.5 升级glibc报错问题">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -364,134 +363,10 @@
           
 
           
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-
-    <div>
-      
-    </div>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/17/Android设计模式与源码分析/" itemprop="url">
-                  Android设计模式源码分析
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-17T21:40:29+08:00" content="2016-06-17">
-              2016-06-17
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
               &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
               </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">读书笔记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/17/Android设计模式与源码分析/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/17/Android设计模式与源码分析/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/06/17/Android设计模式与源码分析/" class="leancloud_visitors" data-flag-title="Android设计模式源码分析">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
           
         </div>
       </header>
@@ -504,51 +379,123 @@
       
 
       
-        
-          
-            
-          
-        
+        <p>同事说线上有台服务器跑程序报错，信息如下：<br>./agent: /lib64/libc.so.6: version `GLIBC_2.14’ not found </p>
+<p>从上面报错可以看出，程序运行时候，没有找到“GLIBC_2.14”这个版本库，而默认的Centos6.5 glibc版本最高为2.12, 所以需要更新系统glibc库。</p>
+<a id="more"></a>
+<p>glibc是gnu发布的libc库，即c运行库，glibc是linux系统中最底层的api，几乎其它任何运行库都会依赖于glibc。glibc除了封装linux操作系统所提供的系统服务外，它本身也提供了许多其它一些必要功能服务的实现。</p>
+<p>很多linux的基本命令，比如cp, rm, ll,ln等，都得依赖于它，如果操作错误或者升级失败会导致系统命令不能使用，严重的造成系统退出后无法重新进入，所以操作时候需要慎重。</p>
+<h4 id="看系统版本和glibc库版本"><a href="#看系统版本和glibc库版本" class="headerlink" title="看系统版本和glibc库版本"></a>看系统版本和glibc库版本</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/redhat-release </span><br><span class="line">CentOS release 6.5 (Final)</span><br><span class="line"> </span><br><span class="line">strings /lib64/libc.so.6 |grep GLIBC_</span><br><span class="line">GLIBC_2.2.5</span><br><span class="line">GLIBC_2.2.6</span><br><span class="line">GLIBC_2.3</span><br><span class="line">GLIBC_2.3.2</span><br><span class="line">GLIBC_2.3.3</span><br><span class="line">GLIBC_2.3.4</span><br><span class="line">GLIBC_2.4</span><br><span class="line">GLIBC_2.5</span><br><span class="line">GLIBC_2.6</span><br><span class="line">GLIBC_2.7</span><br><span class="line">GLIBC_2.8</span><br><span class="line">GLIBC_2.9</span><br><span class="line">GLIBC_2.10</span><br><span class="line">GLIBC_2.11</span><br><span class="line">GLIBC_2.12</span><br><span class="line">GLIBC_PRIVATE</span><br></pre></td></tr></table></figure>
+<p>由上面的信息可以看出系统是CentOS 6.5，最高支持glibc的版本为2.12，而研发程序要2.14版本，所以需要升级。</p>
+<h4 id="下载软件并升级："><a href="#下载软件并升级：" class="headerlink" title="下载软件并升级："></a>下载软件并升级：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> wget http://ftp.gnu.org/gnu/glibc/glibc-2.14.tar.gz </span><br><span class="line">wget http://ftp.gnu.org/gnu/glibc/glibc-ports-2.14.tar.gz </span><br><span class="line">tar -xvf  glibc-2.14.tar.gz </span><br><span class="line">tar -xvf  glibc-ports-2.14.tar.gz</span><br><span class="line">mv glibc-ports-2.14 glibc-2.14/ports</span><br><span class="line">mkdir glibc-build-2.14</span><br><span class="line">cd glibc-build-2.14/ </span><br><span class="line">../glibc-2.14/configure  --prefix=/usr --disable-profile --enable-add-ons --with-headers=/usr/include --with-binutils=/usr/bin</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+<p>注意：当make成功后，会在当前glibc-build-2.14目录下生成一个新的libc.so.6的软连接，指向的是本目录下的libc.so文件，如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ll glibc-build-2.14/libc.so.6</span><br><span class="line">glibc-build-2.14/libc.so.6 -&gt; libc.so</span><br></pre></td></tr></table></figure>
+<p>可以将上面的libc.so文件直接拷贝到/lib64下面改名为libc-2.14.so，删除原来的libc.so.6软连接，建立新的连接即可使用，但是此处有一个大坑，后面会介绍，此处还是按照正常流程安装。</p>
+<p>继续完成后续的安装： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make install</span><br></pre></td></tr></table></figure>
+<p>以上完成不报错的话，查看库文件，发现/lib64/libc.so.6软链接指向了2.14版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> ll /lib64/libc.so.6 </span><br><span class="line">/lib64/libc.so.6 -&gt; /lib64/libc-2.14.so</span><br></pre></td></tr></table></figure>
+<h4 id="再次查看glibc支持的版本："><a href="#再次查看glibc支持的版本：" class="headerlink" title="再次查看glibc支持的版本："></a>再次查看glibc支持的版本：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">strings /lib64/libc.so.6 |grep GLIBC_</span><br><span class="line">GLIBC_2.2.5</span><br><span class="line">GLIBC_2.2.6</span><br><span class="line">GLIBC_2.3</span><br><span class="line">GLIBC_2.3.2</span><br><span class="line">GLIBC_2.3.3</span><br><span class="line">GLIBC_2.3.4</span><br><span class="line">GLIBC_2.4</span><br><span class="line">GLIBC_2.5</span><br><span class="line">GLIBC_2.6</span><br><span class="line">GLIBC_2.7</span><br><span class="line">GLIBC_2.8</span><br><span class="line">GLIBC_2.9</span><br><span class="line">GLIBC_2.10</span><br><span class="line">GLIBC_2.11</span><br><span class="line">GLIBC_2.12</span><br><span class="line">GLIBC_2.13</span><br><span class="line">GLIBC_2.14</span><br><span class="line">GLIBC_PRIVATE</span><br></pre></td></tr></table></figure>
+<p>可以看到glibc支持的版本已经到2.14，再次执行程序就不会报错了。</p>
+<h4 id="其他知识点："><a href="#其他知识点：" class="headerlink" title="其他知识点："></a>其他知识点：</h4><p>有些安装方法是编译时候指定的目录不是/usr,而是通过建立软链指向新的libc-2.14.so版本,在此过程中需要删除原来连接，建立新的软连接，但是此处有一个大坑，就是当你删除libc.so.6之后会导致系统命令不可用,如下在测试机中演示的错误过程：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /lib64/libc.so.6</span><br></pre></td></tr></table></figure>
+<p>接下来当你建立新的软链接时候，会发现ln命令不能用了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ln -s /lib64/libc-2.14.so /lib64/libc.so.6</span><br><span class="line">ln: error while loading shared libraries: libc.so.6: cannot open shared object file: No such file or directory</span><br></pre></td></tr></table></figure>
+<p>当出现上面的状况时候，可以使用以下方法解决（假设libc-2.14.so已经拷贝到/lib64/目录下）:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LD_PRELOAD=/lib64/libc-2.14.so ln -s /lib64/libc-2.14.so /lib64/libc.so.6</span><br></pre></td></tr></table></figure>
+<p>当然如果升级失败，还可以使用下面命令还原至系统升级前的版本libc-2.12.so: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LD_PRELOAD=/lib64/libc-2.12.so ln -s /lib64/libc-2.12.so /lib64/libc.so.6</span><br></pre></td></tr></table></figure>
+<p>“LD_PRELOAD”是一个环境变量，定义在程序运行前优先加载的动态链接库，本处作用就是在执行后面的ln命令时，指定使用的glibc库，这样命令就可以正常使用了。</p>
+
       
     </div>
 
 
     <div>
+      
+        
+
       
     </div>
 
     <footer class="post-footer">
       
-
+        <div class="post-tags">
+          
+            <a href="/tags/Centos6-5-升级glibc报错问题/" rel="tag">#Centos6.5 升级glibc报错问题</a>
+          
+        </div>
       
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/07/bitcoin-command-note/" rel="next" title="Bitcoin系列钱包命令">
+                <i class="fa fa-chevron-left"></i> Bitcoin系列钱包命令
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
       
-        <div class="post-eof"></div>
+
+      
       
     </footer>
 
     <div>
       
+        
+      
     </div>
   </article>
 
 
-    
-  </section>
 
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
-  </nav>
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2018/09/07/upgrade-glibc-note/"
+     data-title="Centos6.5 升级glibc报错问题"
+     data-content=""
+     data-url="http://yoursite.com/2018/09/07/upgrade-glibc-note/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
 
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
 
 
           </div>
           
 
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2018/09/07/upgrade-glibc-note/"
+           data-title="Centos6.5 升级glibc报错问题" data-url="http://yoursite.com/2018/09/07/upgrade-glibc-note/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -568,8 +515,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/logo.png"
@@ -666,6 +622,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#看系统版本和glibc库版本"><span class="nav-number">1.</span> <span class="nav-text">看系统版本和glibc库版本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#下载软件并升级："><span class="nav-number">2.</span> <span class="nav-text">下载软件并升级：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#再次查看glibc支持的版本："><span class="nav-number">3.</span> <span class="nav-text">再次查看glibc支持的版本：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他知识点："><span class="nav-number">4.</span> <span class="nav-text">其他知识点：</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -778,6 +745,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
