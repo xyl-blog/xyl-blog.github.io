@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2018/09/07/bitcoin-command-note/index.html">
 <meta property="og:site_name" content="xyl-blog">
 <meta property="og:description" content="关于比特币系列钱包的bitcoin-cli 命令全集。">
-<meta property="og:updated_time" content="2018-11-12T10:29:14.657Z">
+<meta property="og:updated_time" content="2018-11-12T10:55:27.279Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bitcoin系列钱包命令">
 <meta name="twitter:description" content="关于比特币系列钱包的bitcoin-cli 命令全集。">
@@ -382,8 +382,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bitcoin-cli --datadir=/www/bitcoin/data/</span><br></pre></td></tr></table></figure>
 <p>查看钱包支持的命令</p>
 <p>./bitcoind help</p>
-<p>####A、一般性的命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">stop</span><br><span class="line">getinfo</span><br><span class="line">ping</span><br><span class="line">getnettotals</span><br><span class="line">getnetworkinfo</span><br><span class="line">getpeerinfo</span><br><span class="line">getconnectioncount</span><br><span class="line">verifychain ( checklevel numblocks )</span><br><span class="line">getaddednodeinfo dns ( &quot;node&quot; )</span><br><span class="line">addnode &quot;node&quot; &quot;add|remove|onetry&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="A、一般性的命令"><a href="#A、一般性的命令" class="headerlink" title="A、一般性的命令"></a>A、一般性的命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">stop</span><br><span class="line">getinfo</span><br><span class="line">ping</span><br><span class="line">getnettotals</span><br><span class="line">getnetworkinfo</span><br><span class="line">getpeerinfo</span><br><span class="line">getconnectioncount</span><br><span class="line">verifychain ( checklevel numblocks )</span><br><span class="line">getaddednodeinfo dns ( &quot;node&quot; )</span><br><span class="line">addnode &quot;node&quot; &quot;add|remove|onetry&quot;</span><br></pre></td></tr></table></figure>
 <h4 id="B、钱包、账户、地址、转帐、发消息"><a href="#B、钱包、账户、地址、转帐、发消息" class="headerlink" title="B、钱包、账户、地址、转帐、发消息"></a>B、钱包、账户、地址、转帐、发消息</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">getwalletinfo</span><br><span class="line">walletpassphrase &quot;passphrase&quot; timeout</span><br><span class="line">walletlock</span><br><span class="line">walletpassphrasechange &quot;oldpassphrase&quot; &quot;newpassphrase&quot;</span><br><span class="line">backupwallet &quot;destination&quot;</span><br><span class="line">importwallet &quot;filename&quot;</span><br><span class="line">dumpwallet &quot;filename&quot;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">listaccounts ( minconf )</span><br><span class="line">getaddressesbyaccount &quot;account&quot;</span><br><span class="line">getaccountaddress &quot;account&quot;</span><br><span class="line">getaccount &quot;bitcoinaddress&quot;</span><br><span class="line">validateaddress &quot;bitcoinaddress&quot;</span><br><span class="line">dumpprivkey &quot;bitcoinaddress&quot;</span><br><span class="line">setaccount &quot;bitcoinaddress&quot; &quot;account&quot;</span><br><span class="line">getnewaddress ( &quot;account&quot; )</span><br><span class="line">keypoolrefill ( newsize )</span><br><span class="line">importprivkey &quot;bitcoinprivkey&quot; ( &quot;label&quot; rescan )</span><br><span class="line">createmultisig nrequired [&quot;key&quot;,...]</span><br><span class="line">addmultisigaddress nrequired [&quot;key&quot;,...] ( &quot;account&quot; )</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">getbalance ( &quot;account&quot; minconf )</span><br><span class="line">getunconfirmedbalance</span><br><span class="line">getreceivedbyaccount &quot;account&quot; ( minconf )</span><br><span class="line">listreceivedbyaccount ( minconf includeempty )</span><br><span class="line">getreceivedbyaddress &quot;bitcoinaddress&quot; ( minconf )</span><br><span class="line">listreceivedbyaddress ( minconf includeempty )</span><br><span class="line">move &quot;fromaccount&quot; &quot;toaccount&quot; amount ( minconf &quot;comment&quot; )</span><br><span class="line">listunspent ( minconf maxconf  [&quot;address&quot;,...] )</span><br><span class="line">listlockunspent</span><br><span class="line">lockunspent unlock [&#123;&quot;txid&quot;:&quot;txid&quot;,&quot;vout&quot;:n&#125;,...]</span><br></pre></td></tr></table></figure>
@@ -539,7 +538,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -547,7 +546,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -556,7 +555,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -632,7 +631,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Note"><span class="nav-number">1.</span> <span class="nav-text">Note</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#B、钱包、账户、地址、转帐、发消息"><span class="nav-number">1.0.1.</span> <span class="nav-text">B、钱包、账户、地址、转帐、发消息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#C、Tx、Block、Ming"><span class="nav-number">1.0.2.</span> <span class="nav-text">C、Tx、Block、Ming</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bulwark-cli命令"><span class="nav-number">2.</span> <span class="nav-text">bulwark-cli命令</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Note"><span class="nav-number">1.</span> <span class="nav-text">Note</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#A、一般性的命令"><span class="nav-number">1.0.1.</span> <span class="nav-text">A、一般性的命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#B、钱包、账户、地址、转帐、发消息"><span class="nav-number">1.0.2.</span> <span class="nav-text">B、钱包、账户、地址、转帐、发消息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#C、Tx、Block、Ming"><span class="nav-number">1.0.3.</span> <span class="nav-text">C、Tx、Block、Ming</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bulwark-cli命令"><span class="nav-number">2.</span> <span class="nav-text">bulwark-cli命令</span></a></li></ol></div>
             
           </div>
         </section>
