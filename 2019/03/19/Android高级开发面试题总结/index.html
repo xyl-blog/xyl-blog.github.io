@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2019/03/19/Android高级开发面试题总结/index.html">
 <meta property="og:site_name" content="xyl-blog">
 <meta property="og:description" content="网上找了一些面试题，自己总结了答案，面试备用。">
-<meta property="og:updated_time" content="2019-03-19T15:09:47.341Z">
+<meta property="og:updated_time" content="2019-03-19T16:56:28.161Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android高级开发面试题总结">
 <meta name="twitter:description" content="网上找了一些面试题，自己总结了答案，面试备用。">
@@ -379,49 +379,46 @@
         <p>网上找了一些面试题，自己总结了答案，面试备用。<br><a id="more"></a></p>
 <h6 id="某视频app公司面试题"><a href="#某视频app公司面试题" class="headerlink" title="某视频app公司面试题"></a>某视频app公司面试题</h6><ul>
 <li>Activity启动模式。<blockquote>
-<p>standard(标准模式) </p>
-<pre><code>默认启动模式，启动activity时直接创建新的实例并压入启动它的任务栈顶
-</code></pre><p>singleTop(栈顶复用模式)</p>
-<pre><code>启动singleTop模式的activity时发现当前任务的栈顶已经存在着这个activity的实例，那么就不会创建新的实例，而是调用该实例的onNewIntent()方法。其他的跟标准模式一样。
-</code></pre><p>singleTask(栈内复用模式)</p>
-<pre><code>没有它要的任务栈，系统会新创建一个任务，并将该activity实例化作为该任务的根activity。
-有它要的任务栈，这时候系统会找到该任务栈，如果任务栈里只有它自己则直接调用该activity实例的onNewIntent()方法。如果任务栈中它的上方还存在别的activity，那么这些activity会被全部弹出栈。
-</code></pre><p>singleInstance(单例模式)</p>
-<pre><code>基本上跟singleTask相同，会为activity单独创建一个任务并能够复用。但是该模式的activity不允许其他activity跟自己存在于同一个任务中，由此 activity 启动的任何 activity 均会被在其他的任务中打开。
-</code></pre></blockquote>
+<p>standard(标准模式)<br>  默认启动模式，启动activity时直接创建新的实例并压入启动它的任务栈顶<br>singleTop(栈顶复用模式)<br>  启动singleTop模式的activity时发现当前任务的栈顶已经存在着这个activity的实例，那么就不会创建新的实例，而是调用该实例的onNewIntent()方法。其他的跟标准模式一样。<br>singleTask(栈内复用模式)<br>  没有它要的任务栈，系统会新创建一个任务，并将该activity实例化作为该任务的根activity。<br>  有它要的任务栈，这时候系统会找到该任务栈，如果任务栈里只有它自己则直接调用该activity实例的onNewIntent()方法。如果任务栈中它的上方还存在别的activity，那么这些activity会被全部弹出栈。<br>singleInstance(单例模式)<br>  基本上跟singleTask相同，会为activity单独创建一个任务并能够复用。但是该模式的activity不允许其他activity跟自己存在于同一个任务中，由此 activity 启动的任何 activity 均会被在其他的任务中打开。</p>
+</blockquote>
 </li>
 <li><p>Activity生命周期，从A页面打开B页面，两个页面的生命周期。</p>
 <blockquote>
-<p>activity状态</p>
-<pre><code>running-&gt;当前显示在屏幕的activity(位于任务栈的顶部)，用户可见状态。
-poused-&gt;依旧在用户可见状态，但是界面焦点已经失去，此Activity无法与用户进行交互。
-stopped-&gt;用户看不到当前界面,也无法与用户进行交互 完全被覆盖.
-killed-&gt;当前界面被销毁，等待这系统被回收
-</code></pre><p>oncreate()-&gt;onstart()-&gt;onResume()-&gt;onRestart()-&gt;onPause()-&gt;onStop()-&gt;onDestory()<br>当AActivity切换BActivity的所执行的方法：</p>
-<pre><code>AActivity:onCreate()-&gt;onStart()-&gt;onResume()-&gt;onPause() 
-BActivity:onCreate()-&gt;onStart()-&gt;onResume() 
-AActivity:onStop()-&gt;onDestory()
-</code></pre><p>当AActivity切换BActivity（此activity是以dialog形式存在的）所执行的方法:</p>
-<pre><code>AActivity:onCreate()-&gt;onStart()-&gt;onResume()-&gt;onPause() 
-BActivity:onCreate()-&gt;onStart()-&gt;onResume()
-</code></pre><p>activity的进程优先级。<br>  前台进程&gt;可见进程&gt;service进程&gt;后台进程&gt;空进程<br>  前台进程:</p>
-<pre><code>1.当前进程activity正在与用户进行交互。    
+<p>activity状态<br>  running-&gt;当前显示在屏幕的activity(位于任务栈的顶部)，用户可见状态。<br>  poused-&gt;依旧在用户可见状态，但是界面焦点已经失去，此Activity无法与用户进行交互。<br>  stopped-&gt;用户看不到当前界面,也无法与用户进行交互 完全被覆盖.<br>  killed-&gt;当前界面被销毁，等待这系统被回收<br>oncreate()-&gt;onstart()-&gt;onResume()-&gt;onRestart()-&gt;onPause()-&gt;onStop()-&gt;onDestory()<br>当AActivity切换BActivity的所执行的方法：<br>  AActivity:onCreate()-&gt;onStart()-&gt;onResume()-&gt;onPause()<br>  BActivity:onCreate()-&gt;onStart()-&gt;onResume()<br>  AActivity:onStop()-&gt;onDestory()<br>当AActivity切换BActivity（此activity是以dialog形式存在的）所执行的方法:<br>  AActivity:onCreate()-&gt;onStart()-&gt;onResume()-&gt;onPause()<br>  BActivity:onCreate()-&gt;onStart()-&gt;onResume()<br>activity的进程优先级。<br>  前台进程&gt;可见进程&gt;service进程&gt;后台进程&gt;空进程</p>
+<pre><code>前台进程:
+1.当前进程activity正在与用户进行交互。    
 2.当前进程service正在与activity进行交互或者当前service调用了startForground()属于前台进程或者当前service正在执行生命周期（onCreate(),onStart(),onDestory()）
 3.进程持有一个BroadcostReceiver,这个BroadcostReceiver正在执行onReceive()方法
-</code></pre><p>  可见进程:</p>
-<pre><code>1. 进程持有一个activity，这个activity不再前台，处于onPause()状态下，当前覆盖的activity是以dialog形式存在的。
+可见进程:
+1. 进程持有一个activity，这个activity不再前台，处于onPause()状态下，当前覆盖的activity是以dialog形式存在的。
 2. 进程有一个service，这个service和一个可见的Activity进行绑定。
-</code></pre><p>  service进程:</p>
-<pre><code>当前开启startSerice()启动一个service服务就可以认为进程是一个服务进程。
-</code></pre><p>  后台进程:</p>
-<pre><code>activity的onStop()被调用，但是onDestroy()没有调用的状态。该进程属于后台进程。
-</code></pre><p>  空进程:</p>
-<pre><code>改进程没有任何运行的数据了，且保留在内存空间，并没有被系统killed,属于空进程。该进程很容易
+service进程:
+当前开启startSerice()启动一个service服务就可以认为进程是一个服务进程。
+后台进程:
+activity的onStop()被调用，但是onDestroy()没有调用的状态。该进程属于后台进程。
+空进程:
+改进程没有任何运行的数据了，且保留在内存空间，并没有被系统killed,属于空进程。该进程很容易
 </code></pre></blockquote>
 </li>
 <li><p>onStartCommand的返回值和参数的作用。</p>
+<blockquote>
+<p>在startService启动一个Service 时会执行onStartCommand(Intent intent,int flags,int startId)<br>  参数：<br>  intent：是startService时传过来的 如：startService(new Intent(this,TestService.class));<br>  flags：是系统传入 有如下三种值：</p>
+<pre><code>1.通过startService启动时，flags为0；
+2.onStartCommand返回为START_STICKY_COMPATIBILITY或者START_STICKY并且服务异常杀死后由系统启动；flags为START_FLAG_REDELIVERY=1：
+3.onStartCommand方法未被调用或者没有正常返回的异常情况下， 再次尝试创建，传入的flags就为START_FLAG_RETRY=2。
+startId：传入的这个startId 用来代表这个唯一的启动请求。我们可以在stopSelfResult(int startId)中传入这个startId，用来终止Service。
+</code></pre><p>  返回值</p>
+<pre><code>START_STICKY：如果service进程被kill掉，保留service的状态为开始状态，但不保留递送的intent对象。随后系统会尝试重新创建service，由 于服务状态为开始状态，所以创建服务后一定会调用onStartCommand(Intent,int,int)方法。如果在此期间没有任何启动命令被传 递到service，那么参数Intent将为null。
+START_NOT_STICKY：“非粘性的”。使用这个返回值时，如果在执行完onStartCommand后，服务被异常kill掉，系统不会自动重启该服务
+START_REDELIVER_INTENT：重传Intent。使用这个返回值时，如果在执行完onStartCommand后，服务被异常kill掉，系统会自动重启该服务，并将Intent的值传入。
+START_STICKY_COMPATIBILITY：START_STICKY的兼容版本，但不保证服务被kill后一定能重启。
+</code></pre></blockquote>
 </li>
-<li>Synchronized关键字。一个线程访问某个类的Synchronized成员方法A，同时另一个线程可以去访问这个类的Synchronized成员方法B吗？</li>
+<li><p>Synchronized关键字。一个线程访问某个类的Synchronized成员方法A，同时另一个线程可以去访问这个类的Synchronized成员方法B吗？</p>
+<blockquote>
+<p>synchronized的用法：synchronized修饰方法和synchronized修饰代码块<br>synchronized只是一个内置锁的加锁机制，当某个方法加上synchronized关键字后，就表明要获得该内置锁才能执行，并不能阻止其他线程访问不需要获得该内置锁的方法    </p>
+</blockquote>
+</li>
 <li>App的启动优化。</li>
 <li>Handler，Looper，MessageQueue的关系。Handler通过sendMessageDelayed发送延时消息， 消息什么时候入队列？</li>
 <li>主线程的Looper死循环为什么不会导致ANR?</li>
@@ -493,7 +490,57 @@ BActivity:onCreate()-&gt;onStart()-&gt;onResume()
 <li>HTTPS及其双重检验</li>
 </ul>
 <h6 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h6><ul>
-<li>synchronized的实现原理，和lock的区别。</li>
+<li><p>synchronized的实现原理，和lock的区别。</p>
+<blockquote>
+<p>synchronized是基于jvm底层实现的数据同步，lock是基于Java编写，主要通过硬件依赖CPU指令实现数据同步。<br>一、synchronized的实现方案<br>　　1.synchronized能够把任何一个非null对象当成锁，实现由两种方式：</p>
+<pre><code>a.当synchronized作用于非静态方法时，锁住的是当前对象的事例，当synchronized作用于静态方法时，锁住的是class实例，又因为Class的相关数据存储在永久带，因此静态方法锁相当于类的一个全局锁。
+b.当synchronized作用于一个对象实例时，锁住的是对应的代码块。
+</code></pre><p>  2.synchronized锁又称为对象监视器（object）。<br>  3.当多个线程一起访问某个对象监视器的时候，对象监视器会将这些请求存储在不同的容器中。</p>
+<pre><code>Contention List：竞争队列，所有请求锁的线程首先被放在这个竞争队列中
+Entry List：Contention List中那些有资格成为候选资源的线程被移动到Entry List中
+Wait Set：哪些调用wait方法被阻塞的线程被放置在这里
+OnDeck：任意时刻，最多只有一个线程正在竞争锁资源，该线程被成为OnDeck
+Owner：当前已经获取到所资源的线程被称为Owner
+!Owner：当前释放锁的线程
+</code></pre><p>  4.synchronized在jdk1.6之后提供了多种优化方案：</p>
+<pre><code>自旋锁
+  jdk1.6之后默认开启，可以使用参数-XX:+UseSpinning控制，自旋等待不能代替阻塞，且先不说对处理器数量的要求，自旋等待本身虽然避免了线程切换的开销，但它是要占用处理器时间的，因此，如果锁被占用的时间很短，自旋等待的效果就会非常好，反之，如果锁被占用的时候很长，那么自旋的线程只会白白消耗处理器资源，而不会做任何有用的工作，反而会带来性能上的浪费。自旋次数的默认值是 10 次，用户可以使用参数 -XX:PreBlockSpin 来更改。
+  自旋锁的本质：执行几个空方法，稍微等一等，也许是一段时间的循环，也许是几行空的汇编指令。
+锁消除
+  即时编译器在运行时，对一些代码上要求同步，但是被检测到不可能存在共享数据竞争的锁进行消除，依据来源于逃逸分析的数据支持，那么是什么是逃逸分析？对于虚拟机来说需要使用数据流分析来确定是否消除变量底层框架的同步代码，因为有许多同步的代码不是自己写的。
+锁粗化
+  将同步块的作用范围限制得尽量小——只在共享数据的实际作用域中才进行同步，这样是为了使得需要同步的操作数量尽可能变小，如果存在锁竞争，那等待锁的线程也能尽快拿到锁。
+轻量级锁
+  加锁过程：在代码进入同步块的时候，如果此同步对象没有被锁定（锁标志位为 “01” 状态）虚拟机首先将在当前线程的栈帧中建立一个名为锁记录（Lock Record）的空间，用于存储锁对象目前的 Mark Word 的拷贝，这时候线程堆栈与对象头的状态如图 13-3 所示
+  然后，虚拟机将使用 CAS 操作尝试将对象的 Mark Word 更新为指向 Lock Record 的指针。如果这个更新动作成功了，那么这个线程就拥有了该对象的锁，并且对象 Mark Word 的锁标志位 （Mark Word 的最后 2bit）将转变为 “00”，即表示此对象处于轻量级锁定状态，这时线程堆栈与对象头的状态如图13-4　　              
+  如果上述更新操作失败，则说明这个锁对象被其他锁占用，此时轻量级变为重量级锁，标志位为“10”，后面等待的线程进入阻塞状态。
+  解锁过程：也是由CAS进行操作的，如果对象的 Mark Word 仍然指向着线程的锁记录，那就用 CAS 操作把对象当前的 Mark Word 和线程中复制的 Displaced Mark Word 替换回来，如果替换成功，整个同步过程就完成了。如果替换失败，说明有其他线程尝试过获取该锁，那就要释放锁的同时，唤醒被挂起的线程。
+  轻量级锁能提升程序同步性能的依据是 “对于绝大部分的锁，在整个同步周期内都是不存在竞争的”，这是一个经验数据。如果没有竞争，轻量级锁使用 CAS 操作避免了使用互斥量的开销，但如果存在锁竞争，除了互斥量的开销外，还额外发生了 CAS 操作，因此在有竞争的情况下，轻量级锁会比传统的重量级锁更慢。
+偏向锁
+  偏向锁也是 JDK 1.6 中引入的一项锁优化，它的目的是消除数据在无竞争情况下的同步原语，进一步提高程序的运行性能。如果说轻量级锁是在无竞争的情况下使用 CAS 操作去消除同步使用的互斥量，那偏向锁就是在无竞争的情况下把整个同步都消除掉，连 CAS 操作都不做了。
+  实质就是设置一个变量，判断这个变量是否是当前线程，是就避免再次加锁解锁操作，从而避免了多次的CAS操作。坏处是如果一个线程持有偏向锁，另外一个线程想争用偏向对象，拥有者想释放这个偏向锁，释放会带来额外的性能开销，但是总体来说偏向锁带来的好处还是大于CAS的代价的。在具体问题具体分析的前提下，有时候使用参数 -XX:-UseBiasedLocking 来禁止偏向锁优化反而可以提升性能。
+</code></pre><p>二、lock的实现方案<br>  与synchronized不同的是lock是纯java手写的，与底层的JVM无关。在java.util.concurrent.locks包中有很多Lock的实现类，常用的有ReenTrantLock、ReadWriteLock(实现类有ReenTrantReadWriteLock)，其实现都依赖java.util.concurrent.AbstractQueuedSynchronizer类（简称AQS），实现思路都大同小异，因此我们以ReentrantLock作为讲解切入点。<br>  分析之前我们先来花点时间看下AQS。AQS是我们后面将要提到的CountDownLatch/FutureTask/ReentrantLock/RenntrantReadWriteLock/Semaphore的基础，因此AQS也是Lock和Excutor实现的基础。它的基本思想就是一个同步器，支持获取锁和释放锁两个操作。<br>  要支持上面锁获取、释放锁就必须满足下面的条件：</p>
+<pre><code>1、  状态位必须是原子操作的
+2、  阻塞和唤醒线程
+3、  一个有序的队列，用于支持锁的公平性
+</code></pre><p>  场景：可定时的、可轮询的与可中断的锁获取操作，公平队列，或者非块结构的锁。<br>  主要从以下几个特点介绍：</p>
+<pre><code>1.可重入锁    如果锁具备可重入性，则称作为可重入锁。像synchronized和ReentrantLock都是可重入锁，可重入性在我看来实际上表明了锁的分配机制：基于线程的分配，而不是基于方法调用的分配。
+2.可中断锁
+可中断锁：顾名思义，就是可以相应中断的锁。
+在Java中，synchronized就不是可中断锁，而Lock是可中断锁。
+如果某一线程A正在执行锁中的代码，另一线程B正在等待获取该锁，可能由于等待时间过长，线程B不想等待了，想先处理其他事情，我们可以让它中断自己或者在别的线程中中断它，这种就是可中断锁。
+3.公平锁和非公平锁
+公平锁以请求锁的顺序来获取锁，非公平锁则是无法保证按照请求的顺序执行。synchronized就是非公平锁，它无法保证等待的线程获取锁的顺序。而对于ReentrantLock和ReentrantReadWriteLock，它默认情况下是非公平锁，但是可以设置为公平锁。
+参数为true时表示公平锁，不传或者false都是为非公平锁。
+ReentrantLock lock = new ReentrantLock(true);
+4.读写锁
+读写锁将对一个资源（比如文件）的访问分成了2个锁，一个读锁和一个写锁。
+正因为有了读写锁，才使得多个线程之间的读操作不会发生冲突。
+ReadWriteLock就是读写锁，它是一个接口，ReentrantReadWriteLock实现了这个接口。
+可以通过readLock()获取读锁，通过writeLock()获取写锁。
+</code></pre><p>三、总结<br>  1.synchronized<br>　　优点：实现简单，语义清晰，便于JVM堆栈跟踪，加锁解锁过程由JVM自动控制，提供了多种优化方案，使用更广泛<br>  缺点：悲观的排他锁，不能进行高级功能<br>  2.lock<br>  优点：可定时的、可轮询的与可中断的锁获取操作，提供了读写锁、公平锁和非公平锁　　<br>　　缺点：需手动释放锁unlock，不适合JVM进行堆栈跟踪<br>  3.相同点　<br>  都是可重入锁</p>
+</blockquote>
+</li>
 <li>多进程操作文件，怎么解决同步？</li>
 <li>CAS同步方法。</li>
 <li>binder的实现。</li>
